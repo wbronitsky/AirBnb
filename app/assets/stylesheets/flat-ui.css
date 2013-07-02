@@ -541,7 +541,7 @@ h6 {
 .btn.btn-large > [class^="fui-"].pull-right {
   margin-right: -2px;
 }
-.btn.btn-primary {
+.btn-primary {
   background-color: #1abc9c;
 }
 .btn.btn-primary:hover,

@@ -108,11 +108,12 @@ div.create_new_place{
 
 .link_button{
   float: right;
-  margin: 2px;
+  margin: 5px;
 }
 
 .logout{
   float: left;
+  margin: 5px;
 }
 
 .show{
