@@ -1,0 +1,116 @@
+<h1>List Your Spot!</h1>
+
+
+<%= form_for(@place) do |f| %>
+  <div id="about_your_place">
+    <label for="property_type">Property Type</label>
+    <% property_type_array = %w(apartment house bed&breakfast loft cabin
+                                villa castle dorm treehouse boat plane
+                                parking space car van camper igloo lighthouse
+                                yurt tipi cave island chalet earth-house
+                                hut train tent other) %>
+    <select id="property_type" 
+            name="place[property_type]" 
+            class="select select-block">
+      <% property_type_array.each do |prp| %>
+        <option value="<%= prp %>" <%= 'selected' if @place.property_type == prp %>>
+          <%= prp.capitalize %>
+        </option>
+      <% end %>
+    </select>
+    <br>
+
+    <label for="accommodates">Accommodates</label>
+    <select id="accommodates" 
+            name="place[max_occupancy]" 
+            class="select select-block">
+      <% 15.times do |num| %>
+        <option value="<%= num+1 %>" <%= 'selected' if @place.max_occupancy == '#{num+1}' %>>
+            <%= num+1 %>
+        </option>
+      <% end %>
+      <option value="16">16+</option>
+    </select>
+    <br>
+
+    <label for="room_type">Room Type</label>
+    <select id="room_type" 
+            name="place[room_type]" 
+            class="select select-block">
+      <option value="private room" <%= 'selected' if @place.room_type == 'private room'%>>Private Room
+      </option>
+      <option value="shared room"<%= 'selected' if @place.room_type == 'shared room'%>>Shared room
+      </option>
+      <option value="entire home"<%= 'selected' if @place.room_type == 'entire home'%>>Entire Home/Apartment
+      </option>
+    </select>
+    <br>
+
+    <label for="bedrooms">Bedrooms</label>
+    <select id="bedrooms" 
+            name="place[bedrooms]" 
+            class="select select-block">
+      <% 10.times do |num| %>
+        <option value="<%= num+1 %>"<%= 'selected' if @place.bedrooms == '#{num+1}'%>>
+          <%= num+1 %>
+        </option>
+      <% end %>
+    </select>
+    <br>
+
+    <label for="title">Title</label>
+    <input type="text" id="title" name="place[title]" value="<%= @place.title %>">
+    <br>
+
+    <label for="description">Description</label><br>
+    <textarea id="description>" name="place[description]">
+      <%= @place.description %>
+    </textarea>
+    <br>
+  </div>
+  <div id="protected_info">
+    <label for="phone_number">Phone Number</label>
+    <input type="text" 
+           id="phone_number" 
+           name="place[address_attributes][phone_number]"
+           value="<%= @place.address.phone_number %>">
+    <br>
+
+    <label for="line1">Address Line 1</label>
+    <input type="text" 
+           id="line1" 
+           name="place[address_attributes][line1]"
+           value="<%= @place.address.line1 %>">
+    <br>
+
+    <label for="line2">Address Line 2</label>
+    <input type="text" 
+           id="line2" 
+           name="place[address_attributes][line2]"
+           value="<%= @place.address.line2 %>">   
+    <br>
+
+    <label for="city">City</label>
+    <input type="text" 
+           id="city" 
+           name="place[address_attributes][city]"
+           value="<%= @place.address.city %>">   
+    <br>
+
+    <label for="state">State</label>
+    <input type="text" 
+           id="state" 
+           name="place[address_attributes][state]"
+           value="<%= @place.address.state %>">   
+    <br>
+
+    <label for="zip">Zip Code</label>
+    <input type="text" 
+           id="zip" 
+           name="place[address_attributes][zip]"
+           value="<%= @place.address.zip %>"> 
+    <br>      
+   
+  </div>
+  <input type="submit" value="Edit Listing" class="btn btn-primary">
+<% end %>

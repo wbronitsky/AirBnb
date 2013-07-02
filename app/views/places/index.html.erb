@@ -1,0 +1,44 @@
+<div class="title">
+  <h1>Your Places:</h1>
+</div>
+<div class="container" 
+     data-height="<%= @places.count/4 + 1 %>">
+  <% @places.each do |place| %>
+
+    <div class="place_box inner" 
+         data-id="<%= place.id %>"
+         style="background-image: url('<%= place.filepicker_url %>/convert?format=jpg&quality=20')">
+      <h3 class="box_title"><%= place.title %></h3>
+      <ul id="address_details">
+        <li>Address: <br><%= place.address.line1 %><br>
+        <% if place.address.line2 %>
+          <%= place.address.line2 %></li>
+        <% end %>
+        <li>City: <%= place.address.city %></li>  
+      </ul>
+    </div>
+  <% end %>
+  <div class="create_new_place inner">
+    <div class="float_to_center">
+      List New Place 
+    </div>
+  </div>
+  <%= link_to "List New Place", new_place_url, id: "hidden" %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    var heightMultiplier = parseInt($('div.container').data('height'));
+    var height = heightMultiplier * 200;
+    $('div.container').css("height",  height+"px");
+    $('.container').droppable({accept: '.inner'});
+    $('.container').sortable({revert: true});
+    $('div.place_box').on('dblclick', function(event){
+      window.location.replace("http://localhost:3000/places/" + $(event.currentTarget).data('id'))
+    })
+    $('div.create_new_place').on('dblclick', function(event){
+      window.location.replace("http://localhost:3000/places/new");
+    });
+  });
+</script>
+

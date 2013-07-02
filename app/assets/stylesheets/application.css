@@ -1,0 +1,152 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require ./flat-ui.css
+ *= require jquery.ui.all
+ */
+.current_user_display{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#home_page{
+  background: url(http://farm6.staticflickr.com/5310/5592929174_b3100b13af_z.jpg) no-repeat center center;
+ background-size: cover;
+ height: 400px;
+ width: 100%;
+ left: 0px;
+ color: white;
+ text-shadow: black 0 -1px;
+ background-position: center center;
+ border: 1px;
+ border-radius: 5px;
+}
+
+body{
+   margin: 0px 0px 0px 0px;
+}
+
+#about_your_place{
+  padding: 10px;
+  border: solid 2px;
+  border-color: #1abc9c;
+  width: 350px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  float: left;
+}
+
+#protected_info{
+  padding: 10px;
+  border: solid 2px;
+  border-color: #1abc9c;
+  width: 350px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  float: left;
+}
+
+.title{
+  padding: 10px;
+  border-bottom: solid 2px;
+  border-color: #2ecc71;
+}
+
+.container{
+  width: 928px;
+  margin: 5px 5px 5px 5px;
+  border: 2px solid;
+  border-color: #34495e;
+  border-radius: 5px;
+}
+
+.inner{
+  float: left;
+  border: 1px solid;
+  border-color: #34495E;
+  border-radius: 5px;
+  height: 198px;
+  width: 230px;
+  vertical-align: middle;
+  background-size: cover;
+  background-position: center center;
+  color: #ECF0F1;
+}
+
+ul#address_details{
+  width: 70%;
+  margin: auto;
+  list-style: none;
+  vertical-align: middle;
+}
+
+h3.box_title{
+  padding: 20px;
+}
+
+div.create_new_place{
+  line-height: 200px;
+  text-align: center;
+  background-color: #F1C40F;
+  color: #2C3E50;
+  font-size: medium;
+}
+
+#hidden{
+  display: none;
+}
+
+.link_button{
+  float: right;
+  margin: 2px;
+}
+
+.logout{
+  float: left;
+}
+
+.show{
+  border: solid 1px;
+  border-radius: 5px;
+  border-color: #2C3E50;
+  width: 200px;
+  margin: 5px;
+}
+
+.show_link_button{
+  float: left;
+  margin: 2px;
+  width: 166px;
+  text-align: center;
+}
+
+.image_uploader{
+  float: left;
+  border: solid 2px;
+  border-color: #1abc9c;
+  border-radius: 5px;
+  margin: 5px;
+  width: 375px;
+  text-align: center;
+}
+
+.float_left{
+  float: left;
+}
+
+.main_photo{
+  float: right;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+

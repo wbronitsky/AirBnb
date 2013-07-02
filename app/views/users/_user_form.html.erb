@@ -1,0 +1,14 @@
+<h2>Sign Up</h2>
+<%= form_for(user) do |f| %>
+
+  <label for="user_name">User Name</label>
+  <input type="text" name="user[user_name]" id="user_name">
+
+  <label for="email">Email</label>
+  <input type="text" name="user[email]" id="email">
+
+  <label for="password">Password</label>
+  <input type="password" name="user[password]" id="password">
+
+  <input type="submit" value="Sign Up!">
+<% end %>

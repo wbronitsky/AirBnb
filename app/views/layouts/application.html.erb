@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Air</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= filepicker_js_include_tag %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% flash[:messages].try(:each) do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <%= yield %>
+
+  <% if current_user %>
+    <div class="current_user_display">
+      <p>Hello Homie <%= current_user.user_name %></p> 
+    </div>
+    <%= button_to "Logout", session_url, method: :delete, class: "btn btn-info logout" %>
+    <%= link_to "Home", root_url, class: 'btn link_button' %>
+    <%= link_to "Your Places", places_url, class: 'btn link_button' %>
+  <% else %>
+    <%= link_to "Sign Up", new_user_url %>
+    <%= link_to "Sign In", new_session_url %>
+  <% end %>
+
+
+</body>
+</html>
