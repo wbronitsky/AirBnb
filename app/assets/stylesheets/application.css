@@ -148,15 +148,17 @@ div.create_new_place{
 }
 
 .main_photo{
-  float: left;
   border: solid black 1px;
+  width: 400px;
   border-radius: 5px;
 }
 
 .owner_options{
+  text-align: center;
+  margin: 5px;
+  margin-right: 13px;
+  clear: both;
   float: right;
-  border: solid black 1px;
-  border-radius: 5px;
 }
 
 .stack{
@@ -164,7 +166,9 @@ div.create_new_place{
 }
 
 .form_on_page{
-  float: left;
+  margin: 5px;
+  clear: both;
+  float: right;
   border: solid black 1px;
   border-radius: 5px;
 }
@@ -185,11 +189,6 @@ div.create_new_place{
 #header {
   padding:10px;
   background:#1ABC9C;
-}
-
-#content {
-  padding:10px;
-  padding-bottom:80px;   /* Height of the footer element */
 }
 
 #footer{

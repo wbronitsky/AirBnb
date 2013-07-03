@@ -5,24 +5,46 @@
     <%= link_to "View Rental Requests",  
         place_place_rental_requests_url(@place), 
         class: "btn show_link_button" %>
+        <br>
     <%= link_to "Edit Listing", 
         edit_place_url, 
         class: "btn btn-primary show_link_button" %>
+        <br>
     <%= button_to "Delete Listing", 
         place_url, method: :delete, 
         class:  "btn btn-warning"%>
   </div>
 <% end %>
 
+<div class="form_on_page">
+  <form action="<%= place_place_rental_requests_url(@place) %>" method="post" >
+    <label for="request_begin">Begin Date</label>
+    <br>
+    <input type="date" name="request[begin_date]" id="request_begin">
+    <br>
+
+    <label for="request_end">End Date</label>
+    <br>
+    <input type="date" name="request[end_date]" id="request_end">
+    <br>
+
+    <input type="hidden" name="request[place_id]" value="<%= @place.id %>">
+
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <input type="submit" value="Submit Request!" class="btn submit_button">
+  </form>
+</div>
+
 <div class="main_photo">
   <%= filepicker_image_tag @place.filepicker_url, w:400 %>
 </div>
 
-<div id="description float_left">
+<div id="description">
   <p>Descripton: <br><%= @place.description %></p>
 </div>
 
-<div class="show_details show float_left">
+<div class="show_details show">
   <ul id="show_details">
     <li>Accommodates: <%= @place.max_occupancy %></li>
     <li>Room Type: <%= @place.room_type %></li>
@@ -30,7 +52,7 @@
   </ul>
 </div>
 
-<div class="show_address show float_left">
+<div class="show_address show">
   <ul id="address">
     <li>Address: <br><%= @place.address.line1 %><br>
     <% if @place.address.line2 %>
@@ -41,19 +63,4 @@
     <li>Zip Code: <%= @place.address.zip %></li>
   </ul>
 </div>
-  
-<div class="form_on_page">
-  <form action="<%= place_place_rental_requests_url(@place) %>" method="post" >
-    <label for="request_begin">Begin Date</label>
-    <input type="date" name="request[begin_date]" id="request_begin">
 
-    <label for="request_end">End Date</label>
-    <input type="date" name="request[end_date]" id="request_end">
-
-    <input type="hidden" name="request[place_id]" value="<%= @place.id %>">
-
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-    <input type="submit" value="Rent Me!" class="btn submit_button">
-  </form>
-</div>
