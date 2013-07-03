@@ -1,0 +1,11 @@
+<form action="<%= place_place_rental_requests_url %>" method="post">
+  <label for="request_begin">Begin Date</label>
+  <input type="date" name="request[begin_date]" id="request_begin">
+
+  <label for="request_end">End Date</label>
+  <input type="date" name="request[end_date]" id="request_end">
+
+  <input type="hidden" name="request[place_id]" value="<%= @place.id %>">
+
+  <input type="submit" value="Submit Request" class="btn">
+</form>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702162915) do
+ActiveRecord::Schema.define(:version => 20130702211443) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -20,10 +20,20 @@ ActiveRecord::Schema.define(:version => 20130702162915) do
     t.string   "state"
     t.string   "zip"
     t.string   "country"
-    t.string   "place_id"
     t.string   "phone_number"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "place_id"
+  end
+
+  create_table "place_rental_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "places", :force => true do |t|
@@ -37,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130702162915) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "filepicker_url"
+    t.integer  "place_id"
   end
 
   create_table "users", :force => true do |t|

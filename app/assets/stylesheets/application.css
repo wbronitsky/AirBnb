@@ -14,9 +14,7 @@
  *= require jquery.ui.all
  */
 .current_user_display{
-  position: absolute;
-  top: 0;
-  right: 0;
+  float: right;
 }
 
 #home_page{
@@ -29,11 +27,12 @@
  text-shadow: black 0 -1px;
  background-position: center center;
  border: 1px;
- border-radius: 5px;
 }
 
-body{
-   margin: 0px 0px 0px 0px;
+html, body{
+   margin: 0;
+   padding:0;
+   height:100%;
 }
 
 #about_your_place{
@@ -81,6 +80,7 @@ body{
   background-size: cover;
   background-position: center center;
   color: #ECF0F1;
+  text-shadow: black 0 -1px;
 }
 
 ul#address_details{
@@ -107,13 +107,12 @@ div.create_new_place{
 }
 
 .link_button{
-  float: right;
   margin: 5px;
 }
 
 .logout{
   float: left;
-  margin: 5px;
+  margin: 10px;
 }
 
 .show{
@@ -141,13 +140,62 @@ div.create_new_place{
   text-align: center;
 }
 
+.float_right{
+  float: right;
+}
 .float_left{
   float: left;
 }
 
 .main_photo{
+  float: left;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+.owner_options{
   float: right;
   border: solid black 1px;
   border-radius: 5px;
 }
 
+.stack{
+  position: absolute;
+}
+
+.form_on_page{
+  float: left;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+.rental_request{
+  float: left;
+  border-radius: 5px;
+  border: solid 2px;
+  border-color: #16A085;
+  margin: 10px;
+}
+
+#wrapper {
+  position: relative;
+  min-height:100%;
+}
+
+#header {
+  padding:10px;
+  background:#1ABC9C;
+}
+
+#content {
+  padding:10px;
+  padding-bottom:80px;   /* Height of the footer element */
+}
+
+#footer{
+  position:absolute;
+  width:100%;
+  height:80px;
+  bottom:0;
+  background: #95A5A6;
+}

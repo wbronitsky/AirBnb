@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :user_name
 
   has_many :places, foreign_key: :owner_id
+  has_many :requests, class_name: "PlaceRentalRequest"
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
