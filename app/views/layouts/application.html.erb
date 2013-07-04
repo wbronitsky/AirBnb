@@ -14,9 +14,11 @@
       <% flash[:messages].try(:each) do |msg| %>
         <%= msg %>
       <% end %>
-      <div class="current_user_display">
-        <p>Hello <%= current_user.user_name %></p> 
-      </div>
+      <% if current_user %>
+        <div class="current_user_display">
+          <p>Hello <%= current_user.user_name %></p> 
+        </div>
+      <% end %>
     </div>
 
     <div id="content">
