@@ -11,14 +11,17 @@
 <% else %>
   
   <div id="map-canvas"></div>
-
-  <input type="hidden" 
-         data-address="<%= @search.first.line1 %>" 
-         data-city="<%= @search.first.city %>"
-         id="first_address">
   
   <% @search.each do |place| %>
-    <div class="place_search_box" data-id="<%= place.id %>">
+  <input type="hidden" 
+           
+           
+           id=" ">
+    <div class="place_search_box all_places" 
+         data-id="<%= place.id %>"
+         data-address="<%= place.line1 %>" 
+         data-city="<%= place.city %>"
+         data-title="<%= place.title %>">
       <%= filepicker_image_tag place.filepicker_url, w:450 %>
       <p><%= place.owner.user_name %>'s <%= place.room_type %></p>
       <p><%= place.city.capitalize %>, <%= place.state.capitalize %></p>
@@ -28,4 +31,4 @@
 
 <% end %>
 
-<script type="text/javascript" src="searchPage.js"></script>
+<script type="text/javascript" src="/searchPage.js"></script>

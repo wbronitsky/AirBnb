@@ -11,6 +11,8 @@ gem 'jquery-ui-rails'
 gem 'filepicker-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'ejs'
+gem 'underscore-rails'
 
 group :development do 
   gem 'better_errors'

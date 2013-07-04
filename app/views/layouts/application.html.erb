@@ -8,18 +8,56 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <script type="text/javascript">
+    $(function(){
+      $('.dropdown-toggle').dropdown();
+    })
+  </script>
 
   <div id="wrapper">
-    <div id="header">
-      <% flash[:messages].try(:each) do |msg| %>
-        <%= msg %>
-      <% end %>
-      <% if current_user %>
-        <div class="current_user_display">
-          <p>Hello <%= current_user.user_name %></p> 
-        </div>
-      <% end %>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">AirC'n'C</a>
+        <form action= "<%= places_url %>" 
+              method="get" 
+              class="navbar-search pull-left">
+          <input type="text" 
+                 placeholder="Where do you want to go?"
+                 class="search-query"
+                 name="search[text]">
+          <input type="hidden" 
+                 name="authenticity_token"
+                 value="<%= form_authenticity_token %>">
+          <input type="submit" value="Search" class="btn btn-primary">
+        </form>
+        <% if current_user %>
+          <ul class="nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.user_name %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a href="/users/<%= current_user.id %>">My Profile</a>
+                </li>
+                <li><a href="/message_threads">My Messages</a></li>
+                <li><a href="/places/new">Create New Listing</a></li>
+              </ul>
+            </li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        <% else %>
+          <ul class="nav pull-right">
+            <li><a href="/session/new">Login</a></li>
+            <li><a href="/users/new">Sign Up</a></li>
+          </ul>
+        <% end %>
+      </div>
     </div>
+    
+    <% flash[:messages].try(:each) do |msg| %>
+      <%= msg %>
+    <% end %>
 
     <div id="content">
       <%= yield %>
@@ -30,12 +68,6 @@
   <div class="footer">
     <% if current_user %>
       <%= button_to "Logout", session_url, method: :delete, class: "btn btn-info logout" %>
-      <%= link_to "Home", root_url, class: 'btn link_button float_right' %>
-      <%= link_to "My Profile", user_url(current_user), class: 'btn link_button float_right' %>
-      <%= link_to "My Messages", message_threads_url, class: 'btn link_button float_right' %>
-    <% else %>
-      <%= link_to "Sign Up", new_user_url, class: 'btn link_button float_right' %>
-      <%= link_to "Sign In", new_session_url, class: 'btn link_button float_right' %>
     <% end %>
   </div>
 </body>

@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       @thread = MessageThread.create!(owner_id: current_user.id,
                                       requester_id: params[:message][:reciever_id])
     else
-      @thread = MessageThread.find(params[:thread])
+      @thread = MessageThread.find(params[:thread].to_i)
     end
 
     @message = @thread.messages.build(params[:message])

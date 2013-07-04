@@ -10,14 +10,22 @@
                placeholder="Search"
                class="search_field">
       </div>
-      <div class="search_date_begin float_left">
+      <div class="search_date_begin float_left" 
+           data-toggle="tooltip" 
+           data-placement="bottom"
+           title="Check In" 
+           id="date_begin">
         <input type="date" 
                name="request[begin_date]" 
                id="search_begin"
                class="search_date"
                value="">
       </div>
-      <div class="search_date_end float_left">
+      <div class="search_date_end float_left"
+           data-toggle="tooltip" 
+           data-placement="bottom"
+           title="Check Out" 
+           id="date_end">
         <input type="date" 
                name="request[end_date]" 
                id="search_end"
@@ -27,23 +35,22 @@
       <input type="hidden" 
              name="authenticity_token"
              value="<%= form_authenticity_token %>">
-     <div class="float_left">
-       <select id="guest_num" 
-               name="search[guest_num]" 
-               class="selectpicker"
-               data-style="btn-info">
-        <% 15.times do |num| %>
-          <option value="<%= num+1 %>">
-              <%= num+1 %> Guests
-          </option>
-        <% end %>
-        <option value="16">16+ Guests</option>
-      </select>
-    </div>
-    <div class="float_left">
-     <input type="submit" value="Search!" class="btn btn-primary">
-   </div>
+       <div class="float_left">
+         <select id="guest_num" 
+                 name="search[guest_num]" 
+                 class="selectpicker"
+                 data-style="btn-info">
+          <% 15.times do |num| %>
+            <option value="<%= num+1 %>">
+                <%= num+1 %> Guests
+            </option>
+          <% end %>
+          <option value="16">16+ Guests</option>
+        </select>
+      </div>
+      <div class="float_left">
+       <input type="submit" value="Search!" class="btn btn-primary">
+      </div>
     </form>
   </div>
 </div>
-<%= link_to "Create New Listing", new_place_url , class: "btn btn-primary show_link_button"%>

@@ -1,27 +1,41 @@
 $(function(){
-    var address = $('#first_address').data('address');
-    address = address + " " +$('#first_address').data('city');
-    console.log(address);
-    
-    
     var mapOptions = {
       center: new google.maps.LatLng(0, 0),
-      zoom: 12,
+      zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-    var geocoder = new google.maps.Geocoder();
+    var allPlaces = $('div.all_places');
+    _(allPlaces).each(function(place){
+      var $place = $(place);
 
-    geocoder.geocode({address: address}, function(results, status){
-     map.setCenter(results[0].geometry.location);
-     var marker = new google.maps.Marker({
-      position: results[0].geometry.location,
-      title: "testing"
-     });
+      var title = $place.data('title')
+      var address = $place.data('address');
+      address = address + " " +$place.data('city');
+      
+      var geocoder = new google.maps.Geocoder();
 
-     marker.setMap(map);
+      geocoder.geocode({address: address}, function(results, status){
+       map.setCenter(results[0].geometry.location);
+       var marker = new google.maps.Marker({
+        position: results[0].geometry.location,
+        title: title
+       });
+
+       marker.setMap(map);
+
+       google.maps.event.addListener(marker, 'mouseover', function(event){
+          console.log(event);
+
+        })
+      })
+
     })
+
+    
+
+    
 
     $('.place_search_box').on('click', function(event){
         window.location.replace("http://localhost:3000/places/" + $(event.currentTarget).data('id'))

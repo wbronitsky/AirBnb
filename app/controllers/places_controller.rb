@@ -11,12 +11,14 @@ class PlacesController < ApplicationController
 
     @search = @search.results
 
-    unless params[:request][:begin_date] == "" && params[:request][:end_date] == ""
-      @search = @search.select do |place|
-       request = place.requests
-                      .build(begin_date: params[:request][:begin_date],
-                             end_date: params[:request][:end_date])
-        !request.already_rented?
+    if params[:request]
+      unless params[:request][:begin_date] == "" && params[:request][:end_date] == ""
+        @search = @search.select do |place|
+         request = place.requests
+                        .build(begin_date: params[:request][:begin_date],
+                               end_date: params[:request][:end_date])
+          !request.already_rented?
+        end
       end
     end
   end

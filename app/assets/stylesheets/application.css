@@ -278,3 +278,11 @@ div.create_new_place{
   width: 40%;
   text-align: center;
 }
+
+.single_message{
+  border-radius: 5px;
+  border: solid black 2px;
+  margin: 5px;
+  width: 40%;
+  text-align: center;
+}

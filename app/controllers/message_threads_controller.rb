@@ -12,5 +12,9 @@ class MessageThreadsController < ApplicationController
     @messages = Message.includes(:sender)
                        .includes(:reciever)
                        .where(message_thread_id: params[:id])
+    @messages.each do |message|
+      message.read = true
+      message.save!
+    end
   end
 end

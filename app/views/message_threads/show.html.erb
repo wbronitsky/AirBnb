@@ -1,12 +1,43 @@
+<script type="text/javascript" src="/submitModalFormMessageThread.js"></script>
+
 <% @thread.messages.sort_by! {|message| message.created_at} %>
 <h2>Thread: <%= @thread.messages.first.title %></h2>
 
 <div class="all_messages">
   <% @thread.messages.each do |message| %>
-    <div class="sinlge_message">
+    <div class="single_message">
       <h3>Message: <%= message.title %></h3>
       <h4>Sender: <%= message.sender.id == current_user.id ? "You" : message.sender.user_name %></h4>
       <p><%= message.message %></p>
     </div>
   <% end %>
+</div>
+
+<a href="#new_message" role="button" class="btn" data-toggle="modal" id="message_button">Reply</a>
+
+<div id="new_message" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Message To: <%= current_user.id == @thread.owner_id ? @thread.user2.user_name : @thread.user2.user_name %></h3>
+  </div>
+
+  <div class="modal-body">
+    <form class="message_send_forms">
+      <label for="title">Message Title:</label><br>
+      <input type="text" id="title" name="message[title]" class="modal-text"><br>
+
+      <label for="body">Message:</label><br>
+      <textarea id="body" name="message[message]" class="modal-text modal-textarea"></textarea><br>
+
+      <input type="hidden" name="message[reciever_id]" value="<%= current_user.id == @thread.owner_id ? @thread.requester_id : @thread.owner_id %>">
+
+      <input type="hidden" name="thread" value="<%= @thread.id %>">
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    </form>
+  </div>
+
+  <div class="modal_footer">
+    <button id="send" class="btn btn-primary buffer" data-dismiss="modal" aria-hidden="true">Send</button>
+  </div>
 </div>

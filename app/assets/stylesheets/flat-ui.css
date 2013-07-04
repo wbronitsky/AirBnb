@@ -761,7 +761,7 @@ h6 {
 .navbar .nav > li.active > a:hover,
 .navbar .nav > li.active > a:focus {
   background: none;
-  color: #1abc9c;
+  color: #9B59B6;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -912,13 +912,10 @@ h6 {
   display: none;
 }
 .navbar-inner {
-  background: #eceef0;
-  border: none;
+  background: #3498DB;
+  border: solid #3498DB 1px;
   padding-left: 0;
   padding-right: 0;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   filter: unquote("progid:DXImageTransform.Microsoft.gradient(enabled = false)");
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -2304,7 +2301,7 @@ textarea[class*="span"] {
   padding-top: 8px;
 }
 .tooltip.bottom .tooltip-arrow {
-  border-bottom-color: #34495e;
+  border-bottom-color: #1ABC9C;
   border-width: 0 9px 9px;
   margin-left: -9px;
   top: -1px;
