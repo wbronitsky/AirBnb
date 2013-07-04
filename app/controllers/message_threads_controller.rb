@@ -6,4 +6,8 @@ class MessageThreadsController < ApplicationController
       thread.created_at
     end
   end
+
+  def show
+    @thread = MessageThread.includes(:messages).find(params[:id])
+  end
 end

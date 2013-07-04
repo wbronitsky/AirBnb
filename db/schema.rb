@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704182009) do
+ActiveRecord::Schema.define(:version => 20130704201956) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(:version => 20130704182009) do
     t.integer  "reciever_id"
     t.text     "message"
     t.boolean  "read"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "title"
+    t.integer  "message_thread_id"
   end
 
   create_table "place_rental_requests", :force => true do |t|

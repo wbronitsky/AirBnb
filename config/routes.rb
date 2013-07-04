@@ -1,10 +1,9 @@
 Air::Application.routes.draw do
   resources :users 
-  resources :messages
-  resources :message_threads
-  resource :session
+  resources :message_threads, only: [:index, :show]
+  resource :session, only: [:create, :destroy, :new]
   resources :places do
-    resources :place_rental_requests do
+    resources :place_rental_requests, except: [:edit, :update] do
       member do
         get "approve", "deny"
       end
