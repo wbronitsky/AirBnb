@@ -39,7 +39,7 @@
   </div>
 
   <div id="tabs-4">
-    <div class="show_address show float_right clear_me">
+    <div class="show_address show clear_me">
       <ul id="address">
         <li>Address: <br><%= @place.line1 %><br>
         <% if @place.line2 %>
@@ -66,14 +66,15 @@
     <%= button_to "Delete Listing", 
         place_url(@place), 
         method: :delete, 
-        class:  "btn btn-warning"%>
+        class:  "btn btn-warning",
+        style: "width: 190px; margin: 2px;"%>
   </div>
 <% end %>
 
 <div class="form_on_page" data-id="<%=@place.id %>">
   <select id="payment_period"
           name="place[payment_period]"
-          class="select select-block"
+          class="selectpicker select-block"
           data-day="<%= @place.day_price %>"
           data-week="<%= @place.week_price %>"
           data-month="<%= @place.month_price %>">

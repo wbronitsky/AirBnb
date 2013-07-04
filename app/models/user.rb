@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :places, foreign_key: :owner_id
   has_many :requests, class_name: "PlaceRentalRequest"
+  has_many :recieved_messages, class_name: "Message", foreign_key: :reciever_id
+  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)

@@ -161,11 +161,15 @@ div.create_new_place{
 }
 
 .rental_request{
-  float: left;
+  text-align: center;
   border-radius: 5px;
   border: solid 2px;
   border-color: #16A085;
   margin: 10px;
+}
+
+.rental_request_ul{
+  list-style: none;
 }
 
 #wrapper {
@@ -173,7 +177,7 @@ div.create_new_place{
 }
 
 #header {
-  padding:10px;
+  padding:20px;
   background:#1ABC9C;
 }
 
@@ -213,6 +217,12 @@ div.create_new_place{
   margin: 10px;
 }
 
+.tabs_box_request{
+  border: solid black 3px;
+  width: 700px;
+  margin: 10px;
+}
+
 .height_adjust{
   height: 35px;
 }
@@ -248,4 +258,23 @@ div.create_new_place{
 
 .clear_me{
   clear: both;
+}
+
+.modal-text{
+  vertical-align: center;
+  width: 75%;
+}
+
+.modal-textarea{
+  height: 200px;
+}
+.buffer{
+  margin: 5px;
+}
+.single_message{
+  border-radius: 5px;
+  border: solid black 2px;
+  margin: 5px;
+  width: 40%;
+  text-align: center;
 }

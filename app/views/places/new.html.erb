@@ -22,7 +22,7 @@
                                 hut train tent other) %>
     <select id="property_type" 
             name="place[property_type]" 
-            class="select select-block">
+            class="selectpicker select-block">
       <% property_type_array.each do |prp| %>
         <option value="<%= prp %>" <%= 'selected' if @place.property_type == prp %>>
           <%= prp.capitalize %>
@@ -34,7 +34,7 @@
     <label for="accommodates">Accommodates</label>
     <select id="accommodates" 
             name="place[max_occupancy]" 
-            class="select select-block">
+            class="selectpicker select-block">
       <% 15.times do |num| %>
         <option value="<%= num+1 %>" <%= 'selected' if @place.max_occupancy == '#{num+1}' %>>
             <%= num+1 %>
@@ -47,7 +47,7 @@
     <label for="room_type">Room Type</label>
     <select id="room_type" 
             name="place[room_type]" 
-            class="select select-block">
+            class="selectpicker select-block">
       <option value="private room" <%= 'selected' if @place.room_type == 'private room'%>>Private Room
       </option>
       <option value="shared room"<%= 'selected' if @place.room_type == 'shared room'%>>Shared room
@@ -60,7 +60,7 @@
     <label for="bedrooms">Bedrooms</label>
     <select id="bedrooms" 
             name="place[bedrooms]" 
-            class="select select-block">
+            class="selectpicker select-block">
       <% 10.times do |num| %>
         <option value="<%= num+1 %>"<%= 'selected' if @place.bedrooms == '#{num+1}'%>>
           <%= num+1 %>

@@ -4,7 +4,7 @@ class PlaceRentalRequest < ActiveRecord::Base
   belongs_to :place
   belongs_to :user
 
-  validate :not_already_rented
+  validate :not_already_rented, :begin_date_not_in_past, :end_date_after_begin_date
 
   def approve
     unless already_rented?
@@ -40,6 +40,18 @@ class PlaceRentalRequest < ActiveRecord::Base
   def not_already_rented
     if already_rented?
       errors[:begin_date] << "that date has already been taken"
+    end
+  end
+
+  def begin_date_not_in_past
+    if begin_date < Date.today
+      errors[:begin_date] << "cannot go on vacation in the past"
+    end
+  end
+
+  def end_date_after_begin_date
+    if begin_date > end_date
+      errors[:end_date] << "check in before check out"
     end
   end
 end

@@ -1,22 +1,77 @@
-<% @requests.each do |request| %>
-  <% next if request.begin_date < Date.today %>
-  <div class="rental_request">
-    <h3>Request From: <%= request.user.user_name %></h3>
-    <ul>
-      <li>Start Date: <%= request.begin_date.strftime("%m/%d/%Y") %></li>
-      <li>End Date: <%= request.end_date.strftime("%m/%d/%Y") %></li>
-    </ul>
-    <% if request.status == "approved" || request.status == "denied" %>
-      <p>Current Status: <%= request.status.capitalize %></p>
-    <% else %>
-      <%= link_to "Approve", 
-          approve_place_place_rental_request_url(@place, request),
-          class: "btn btn-success link_button" %>
-      <%= link_to "Deny", 
-          deny_place_place_rental_request_url(@place, request),
-          class: "btn btn-danger link_button" %>
+<script type="text/javascript" src="/requestShow.js"></script>
+
+<div id="tabs" class="tabs_box_request">
+  <ul class="height_adjust">
+    <li><a href="#tabs-1">Current Reservations</a></li>
+    <li><a href="#tabs-2">Pending Requests</a></li>
+    <li><a href="#tabs-3">Denied Requests</a></li>
+  </ul>
+
+  <div id="tabs-1">
+    <% @approved_requests.each do |request| %>
+      <% next if request.begin_date < Date.today %>
+      <div class="rental_request" 
+           data-id="<%= request.id %>"
+           data-place="<%= request.place_id %>">
+        <h3>Request From: <%= request.user.user_name %></h3>
+        <ul class="rental_request_ul">
+          <li>Start Date: <%= request.begin_date.strftime("%m/%d/%Y") %></li>
+          <li>End Date: <%= request.end_date.strftime("%m/%d/%Y") %></li>
+        </ul>
+        <p>Current Status: <%= request.status.capitalize %></p>
+      </div>
     <% end %>
   </div>
-<% end %>
+
+  <div id="tabs-2">
+     <% @pending_requests.each do |request| %>
+      <% next if request.begin_date < Date.today %>
+      <div class="rental_request" 
+           data-id="<%= request.id %>"
+           data-place="<%= request.place_id %>">
+        <h3>Request From: <%= request.user.user_name %></h3>
+        <ul class="rental_request_ul">
+          <li>Start Date: <%= request.begin_date.strftime("%m/%d/%Y") %></li>
+          <li>End Date: <%= request.end_date.strftime("%m/%d/%Y") %></li>
+        </ul>
+        <p>Current Status: Pending</p>
+        <%= link_to "Approve", 
+            approve_place_place_rental_request_url(@place, request),
+            class: "btn btn-success link_button" %>
+        <%= link_to "Deny", 
+            deny_place_place_rental_request_url(@place, request),
+            class: "btn btn-danger link_button" %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div id="tabs-3">
+     <% @denied_requests.each do |request| %>
+      <% next if request.begin_date < Date.today %>
+      <div class="rental_request" 
+           data-id="<%= request.id %>"
+           data-place="<%= request.place_id %>">
+        <h3>Request From: <%= request.user.user_name %></h3>
+        <ul class="rental_request_ul">
+          <li>Start Date: <%= request.begin_date.strftime("%m/%d/%Y") %></li>
+          <li>End Date: <%= request.end_date.strftime("%m/%d/%Y") %></li>
+        </ul>
+        <% if request.status == "approved" || request.status == "denied" %>
+          <p>Current Status: <%= request.status.capitalize %></p>
+        <% else %>
+          <%= link_to "Approve", 
+              approve_place_place_rental_request_url(@place, request),
+              class: "btn btn-success link_button" %>
+          <%= link_to "Deny", 
+              deny_place_place_rental_request_url(@place, request),
+              class: "btn btn-danger link_button" %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+
+
 
 <%= link_to "Back To Place", place_url(@place), class: "btn btn-primary link_button float_left" %>

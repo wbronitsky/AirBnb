@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/userShow.js"></script>
 <div class="title">
-  <h1>Your Places:</h1>
+  <h1><%= current_user.user_name %>'s Places:</h1>
 </div>
 <div class="container" 
      data-height="<%= @places.count/4 + 1 %>">
@@ -19,29 +19,38 @@
       </ul>
     </div>
   <% end %>
-  <div class="create_new_place inner">
-    <div class="float_to_center">
-      List A New Place!
-    </div>
-  </div>
-</div>
-
-<div class="title">
-  <h1>Your Current Trips:</h1>
-</div>
-
-<div class="generic">
-  <% @trips.each do |trip| %>
-    <div class="trip_display">
-      <h4>Your Trip To <%= trip.place.title %>:</h4>
-      <ul>
-        <li>From: <%= trip.begin_date.strftime("%m/%d/%Y") %></li>
-        <li>To: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
-      </ul>
-      <%= link_to "Property Details", place_url(trip.place), class: "btn" %>
+  <% if current_user.id == @places.first.owner_id %>
+    <div class="create_new_place inner">
+      <div class="float_to_center">
+        List A New Place!
+      </div>
     </div>
   <% end %>
 </div>
+
+<% if current_user.id == @places.first.owner_id %>
+  <div class="title">
+    <h1>Your Current Trips:</h1>
+  </div>
+
+  <div class="generic">
+    <% @trips.each do |trip| %>
+      <div class="trip_display">
+        <h4>Your Trip To <%= trip.place.title %>:</h4>
+        <ul>
+          <li>From: <%= trip.begin_date.strftime("%m/%d/%Y") %></li>
+          <li>To: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+        </ul>
+        <%= link_to "Property Details", place_url(trip.place), class: "btn" %>
+        <button class="cancel_trip btn btn-danger" 
+                data-id="<%= trip.id %>"
+                data-place="<%= trip.place_id %>">
+                Cancel Trip
+        </button>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
 
 

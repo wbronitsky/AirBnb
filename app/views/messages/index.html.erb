@@ -1,0 +1,11 @@
+<h2>My Messages</h2>
+
+<div class="all_messages">
+  <% @threads.each do |thread| %>
+    <div class="single_message">
+      <!-- figure out how to display the other persons name and have a title to a thread -->
+      <h5>From: <%= thread.messages.first.sender.user_name %></h5>
+      <h5>Title: <%= msg.title %></h5>   
+    </div>
+  <% end %> 
+</div>

@@ -30,7 +30,8 @@
      <div class="float_left">
        <select id="guest_num" 
                name="search[guest_num]" 
-               class="select btn">
+               class="selectpicker"
+               data-style="btn-info">
         <% 15.times do |num| %>
           <option value="<%= num+1 %>">
               <%= num+1 %> Guests
@@ -40,7 +41,7 @@
       </select>
     </div>
     <div class="float_left">
-     <input type="submit" value="Search!" class="btn">
+     <input type="submit" value="Search!" class="btn btn-primary">
    </div>
     </form>
   </div>
