@@ -1,6 +1,12 @@
 <% @thread.messages.sort_by! {|message| message.created_at} %>
-<h2><%= @thread.messages.first.title %></h2>
+<h2>Thread: <%= @thread.messages.first.title %></h2>
 
 <div class="all_messages">
   <% @thread.messages.each do |message| %>
     <div class="sinlge_message">
+      <h3>Message: <%= message.title %></h3>
+      <h4>Sender: <%= message.sender.id == current_user.id ? "You" : message.sender.user_name %></h4>
+      <p><%= message.message %></p>
+    </div>
+  <% end %>
+</div>
