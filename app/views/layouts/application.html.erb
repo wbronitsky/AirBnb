@@ -22,16 +22,18 @@
     <div id="content">
       <%= yield %>
     </div>
+    <div class="clearfooter"></div>
   </div>
 
-  <% if current_user %>
-    <%= button_to "Logout", session_url, method: :delete, class: "btn btn-info logout" %>
-    <%= link_to "Home", root_url, class: 'btn link_button float_right' %>
-    <%= link_to "Your Places", places_url, class: 'btn link_button float_right' %>
-  <% else %>
-    <%= link_to "Sign Up", new_user_url, class: 'btn link_button float_right' %>
-    <%= link_to "Sign In", new_session_url, class: 'btn link_button float_right' %>
-  <% end %>
-
+  <div class="footer">
+    <% if current_user %>
+      <%= button_to "Logout", session_url, method: :delete, class: "btn btn-info logout" %>
+      <%= link_to "Home", root_url, class: 'btn link_button float_right' %>
+      <%= link_to "Your Profile", user_url(current_user), class: 'btn link_button float_right' %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_url, class: 'btn link_button float_right' %>
+      <%= link_to "Sign In", new_session_url, class: 'btn link_button float_right' %>
+    <% end %>
+  </div>
 </body>
 </html>

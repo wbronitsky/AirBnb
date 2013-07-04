@@ -2,7 +2,18 @@
 
 
 <%= form_for(@place) do |f| %>
-  <div id="about_your_place">
+  <div id="about_your_place" class="new_form_box">
+
+    <label for="title">Title</label><br>
+    <input type="text" id="title" name="place[title]" value="<%= @place.title %>">
+    <br>
+
+    <label for="description">Description</label><br>
+    <textarea id="description>" name="place[description]">
+      <%= @place.description %>
+    </textarea>
+    <br>
+
     <label for="property_type">Property Type</label>
     <% property_type_array = %w(apartment house bed&breakfast loft cabin
                                 villa castle dorm treehouse boat plane
@@ -57,63 +68,97 @@
       <% end %>
     </select>
     <br>
-
-    <label for="title">Title</label>
-    <input type="text" id="title" name="place[title]" value="<%= @place.title %>">
-    <br>
-
-    <label for="description">Description</label><br>
-    <textarea id="description>" name="place[description]">
-      <%= @place.description %>
-    </textarea>
-    <br>
   </div>
-  <div id="protected_info">
+
+  <div id="protected_info" class="new_form_box">
     <label for="phone_number">Phone Number</label>
     <input type="text" 
            id="phone_number" 
-           name="place[address_attributes][phone_number]"
-           value="<%= @place.address.phone_number %>">
+           name="place[phone_number]"
+           value="<%= @place.phone_number %>">
     <br>
 
     <label for="line1">Address Line 1</label>
     <input type="text" 
            id="line1" 
-           name="place[address_attributes][line1]"
-           value="<%= @place.address.line1 %>">
+           name="place[line1]"
+           value="<%= @place.line1 %>">
     <br>
 
     <label for="line2">Address Line 2</label>
     <input type="text" 
            id="line2" 
-           name="place[address_attributes][line2]"
-           value="<%= @place.address.line2 %>">   
+           name="place[line2]"
+           value="<%= @place.line2 %>">   
     <br>
 
     <label for="city">City</label>
     <input type="text" 
            id="city" 
-           name="place[address_attributes][city]"
-           value="<%= @place.address.city %>">   
+           name="place[city]"
+           value="<%= @place.city %>">   
     <br>
 
     <label for="state">State</label>
     <input type="text" 
            id="state" 
-           name="place[address_attributes][state]"
-           value="<%= @place.address.state %>">   
+           name="place[state]"
+           value="<%= @place.state %>">   
     <br>
 
     <label for="zip">Zip Code</label>
     <input type="text" 
            id="zip" 
-           name="place[address_attributes][zip]"
-           value="<%= @place.address.zip %>"> 
+           name="place[zip]"
+           value="<%= @place.zip %>"> 
     <br>      
    
   </div>
 
-  <div class="image_uploader">
+  <div id="rental_options" class="new_form_box">
+    <label for="day_price">Price Per Day</label><br>
+    <input type="text"
+           id="day_price"
+           name="place[day_price]"
+           value="<%= @place.day_price %>">
+           <br>
+
+    <label for="week_price">Price Per Week</label><br>
+    <input type="text"
+           id="week_price"
+           name="place[week_price]"
+           value="<%= @place.week_price %>">
+           <br>
+
+    <label for="month_price">Price Per Month</label><br>
+    <input type="text"
+           id="month_price"
+           name="place[month_price]"
+           value="<%= @place.month_price %>">
+           <br>
+
+    <label for="check_in">Check In Time</label><br>
+    <input type="text"
+           id="check_in"
+           name="place[check_in]"
+           value="<%= @place.check_in %>">
+           <br>
+
+    <label for="check_out">Check Out Time</label><br>
+    <input type="text"
+           id="check_out"
+           name="place[check_out]"
+           value="<%= @place.check_out %>">
+           <br>
+
+    <label for="special_info">Any Special Instructions?</label><br>
+    <textarea id="special_info" name="place[special_info]">
+      <%= @place.special_info %>
+    </textarea>
+    <br>
+  </div>
+
+  <div class="image_uploader float_left">
     <%= f.label :filepicker_url, "Upload Your Main Photo:" %>
     <%= f.filepicker_field :filepicker_url %>
   </div>

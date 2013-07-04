@@ -6,12 +6,9 @@ class PlaceRentalRequestsController < ApplicationController
   def create
     place_rental_request = current_user.requests.build(params[:request])
     if place_rental_request.save
-      redirect_to place_url(params[:place_id])
+      render json: place_rental_request
     else
-      flash[:messages] ||= []
-      flash[:messages] << "Not going to work"
-
-      redirect_to place_url(params[:place_id])
+      render json: place_rental_request, status: 422
     end
   end
 

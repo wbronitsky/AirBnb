@@ -16,4 +16,13 @@ class UsersController < ApplicationController
       redirect_to new_user_url
     end
   end
+
+  def show
+    @places = current_user.places
+    @trips = PlaceRentalRequest.includes(:place)
+                                .where(user_id: current_user.id, 
+                                       status: "approved")
+                                .order("begin_date")
+  end
+
 end

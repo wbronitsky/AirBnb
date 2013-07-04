@@ -10,6 +10,7 @@ gem 'bcrypt-ruby'
 gem 'jquery-ui-rails'
 gem 'filepicker-rails'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 group :development do 
   gem 'better_errors'
@@ -27,6 +28,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
 
 gem 'jquery-rails'
 

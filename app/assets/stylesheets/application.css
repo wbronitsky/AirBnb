@@ -20,7 +20,7 @@
 #home_page{
   background: url(http://farm6.staticflickr.com/5310/5592929174_b3100b13af_z.jpg) no-repeat center center;
  background-size: cover;
- height: 400px;
+ height: 500px;
  width: 100%;
  left: 0px;
  color: white;
@@ -35,21 +35,10 @@ html, body{
    height:100%;
 }
 
-#about_your_place{
+.new_form_box{
   padding: 10px;
   border: solid 2px;
   border-color: #1abc9c;
-  width: 350px;
-  border-radius: 5px;
-  margin: 5px 5px 5px 5px;
-  float: left;
-}
-
-#protected_info{
-  padding: 10px;
-  border: solid 2px;
-  border-color: #1abc9c;
-  width: 350px;
   border-radius: 5px;
   margin: 5px 5px 5px 5px;
   float: left;
@@ -57,6 +46,7 @@ html, body{
 
 .title{
   padding: 10px;
+  border-top: solid 2px;
   border-bottom: solid 2px;
   border-color: #2ecc71;
 }
@@ -64,9 +54,6 @@ html, body{
 .container{
   width: 928px;
   margin: 5px 5px 5px 5px;
-  border: 2px solid;
-  border-color: #34495e;
-  border-radius: 5px;
 }
 
 .inner{
@@ -111,6 +98,7 @@ div.create_new_place{
 }
 
 .logout{
+  clear: left;
   float: left;
   margin: 10px;
 }
@@ -136,7 +124,7 @@ div.create_new_place{
   border-color: #1abc9c;
   border-radius: 5px;
   margin: 5px;
-  width: 375px;
+  width: 330px;
   text-align: center;
 }
 
@@ -157,7 +145,6 @@ div.create_new_place{
   text-align: center;
   margin: 5px;
   margin-right: 13px;
-  clear: both;
   float: right;
 }
 
@@ -167,8 +154,8 @@ div.create_new_place{
 
 .form_on_page{
   margin: 5px;
-  clear: both;
   float: right;
+  clear: right;
   border: solid black 1px;
   border-radius: 5px;
 }
@@ -183,7 +170,6 @@ div.create_new_place{
 
 #wrapper {
   position: relative;
-  min-height:100%;
 }
 
 #header {
@@ -193,8 +179,73 @@ div.create_new_place{
 
 #footer{
   position:absolute;
+  bottom: 0px;
   width:100%;
   height:80px;
-  bottom:0;
   background: #95A5A6;
+}
+
+.clearfooter{
+  height: 80px;
+  clear: both;
+}
+
+.search_bar{
+  margin-top: 130px;
+}
+
+.place_search_box{
+  float: right;
+  clear: right;
+  border: solid black 1px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.trip_display{
+  margin: 8px;
+}
+
+.tabs_box{
+  float: left;
+  border: solid black 2px;
+  width: 500px;
+  margin: 10px;
+}
+
+.height_adjust{
+  height: 35px;
+}
+
+#description{
+  position: relative;
+}
+
+.check_details{
+  list-style: none;
+}
+
+.center_me{
+  text-align: center;
+}
+
+#map-canvas{
+  float: left;
+  position: fixed !important;
+  border: solid black 1px;
+  border-radius: 5px;
+  width: 450px;
+  height: 550px;
+  margin: 10px;
+}
+
+.p_left{
+  text-align: right;
+  line-height: 0;
+  bottom: 0px;
+  right: 0px;
+}
+
+.clear_me{
+  clear: both;
 }

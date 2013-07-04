@@ -1,4 +1,48 @@
 <div id="home_page">
 <h1>Welcome Home!</h1>
+
+  <div class="search_bar">
+    <form action="<%= places_url %>" method="get">
+      <div class="float_left">
+        <input type="text" 
+               name="search[text]" 
+               id="text" 
+               placeholder="Search"
+               class="search_field">
+      </div>
+      <div class="search_date_begin float_left">
+        <input type="date" 
+               name="request[begin_date]" 
+               id="search_begin"
+               class="search_date"
+               value="">
+      </div>
+      <div class="search_date_end float_left">
+        <input type="date" 
+               name="request[end_date]" 
+               id="search_end"
+               class="search_date"
+               value="">
+      </div>
+      <input type="hidden" 
+             name="authenticity_token"
+             value="<%= form_authenticity_token %>">
+     <div class="float_left">
+       <select id="guest_num" 
+               name="search[guest_num]" 
+               class="select btn">
+        <% 15.times do |num| %>
+          <option value="<%= num+1 %>">
+              <%= num+1 %> Guests
+          </option>
+        <% end %>
+        <option value="16">16+ Guests</option>
+      </select>
+    </div>
+    <div class="float_left">
+     <input type="submit" value="Search!" class="btn">
+   </div>
+    </form>
+  </div>
 </div>
 <%= link_to "Create New Listing", new_place_url , class: "btn btn-primary show_link_button"%>

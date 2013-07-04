@@ -115,6 +115,7 @@ GEM
     sunspot_rails (2.0.0)
       nokogiri
       sunspot (= 2.0.0)
+    sunspot_solr (2.0.0)
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.14)
@@ -140,4 +141,5 @@ DEPENDENCIES
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sunspot_rails
+  sunspot_solr
   uglifier (>= 1.0.3)

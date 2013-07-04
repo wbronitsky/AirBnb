@@ -1,43 +1,31 @@
-<div class="title">
-  <h1>Your Places:</h1>
-</div>
-<div class="container" 
-     data-height="<%= @places.count/4 + 1 %>">
-  <% @places.each do |place| %>
-
-    <div class="place_box inner" 
-         data-id="<%= place.id %>"
-         style="background-image: url('<%= place.filepicker_url %>/convert?format=jpg&quality=20')">
-      <h3 class="box_title"><%= place.title %></h3>
-      <ul id="address_details">
-        <li>Address: <br><%= place.address.line1 %><br>
-        <% if place.address.line2 %>
-          <%= place.address.line2 %></li>
-        <% end %>
-        <li>City: <%= place.address.city %></li>  
-      </ul>
-    </div>
-  <% end %>
-  <div class="create_new_place inner">
-    <div class="float_to_center">
-      List A New Place!
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  $(function(){
-    var heightMultiplier = parseInt($('div.container').data('height'));
-    var height = heightMultiplier * 200;
-    $('div.container').css("height",  height+"px");
-    $('.container').droppable({accept: '.inner'});
-    $('.container').sortable({revert: true});
-    $('div.place_box').on('dblclick', function(event){
-      window.location.replace("http://localhost:3000/places/" + $(event.currentTarget).data('id'))
-    })
-    $('div.create_new_place').on('dblclick', function(event){
-      window.location.replace("http://localhost:3000/places/new");
-    });
-  });
+<script type="text/javascript" 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqObCxiZ0v7hmMXvcNXZEhONhDHiKhbBs&sensor=false">
 </script>
 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<h2 style="float: right;">Search Results:</h2>
+
+<% if @search.empty? %>
+  <p>No Results Found, Sorry!</p>
+<% else %>
+  
+  <div id="map-canvas"></div>
+
+  <input type="hidden" 
+         data-address="<%= @search.first.line1 %>" 
+         data-city="<%= @search.first.city %>"
+         id="first_address">
+  
+  <% @search.each do |place| %>
+    <div class="place_search_box" data-id="<%= place.id %>">
+      <%= filepicker_image_tag place.filepicker_url, w:450 %>
+      <p><%= place.owner.user_name %>'s <%= place.room_type %></p>
+      <p><%= place.city.capitalize %>, <%= place.state.capitalize %></p>
+      <div class="p_left"><h4>$<%= place.day_price %> per night</h4></div>
+    </div>
+  <% end %>
+
+<% end %>
+
+<script type="text/javascript" src="searchPage.js"></script>

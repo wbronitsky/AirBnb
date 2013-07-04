@@ -1,5 +1,58 @@
 <h1><%= @place.title %></h1>
 
+<div id="tabs" class="tabs_box">
+  <ul class="height_adjust">
+    <li><a href="#tabs-1">Photo</a></li>
+    <li><a href="#tabs-2">Place Details</a></li>
+    <li><a href="#tabs-3">Rental Details</a></li>
+    <li><a href="#tabs-4">Address Info</a></li>
+  </ul>
+  <div id="tabs-1">
+    <div class="main_photo">
+      <%= filepicker_image_tag @place.filepicker_url, w:400 %>
+    </div>
+
+  </div>
+  <div id="tabs-2">
+    <div id="description">
+      <p>Descripton: <br><%= @place.description %></p>
+    </div>
+
+    <div class="show_details show">
+      <ul id="show_details">
+        <li>Accommodates: <%= @place.max_occupancy %></li>
+        <li>Room Type: <%= @place.room_type.capitalize %></li>
+        <li>Bedrooms: <%= @place.bedrooms %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="tabs-3">
+    <div class="show_rental_details show">
+      <ul class="check_details">
+        <li>Check In Time: <%= @place.check_in %></li>
+        <li>Check Out Time: <%= @place.check_out %></li>
+      </ul>
+      <h4>Special Instructions:</h4>
+      <p class="center_me"><%= @place.special_info %></p>
+    </div>
+  </div>
+
+  <div id="tabs-4">
+    <div class="show_address show float_right clear_me">
+      <ul id="address">
+        <li>Address: <br><%= @place.line1 %><br>
+        <% if @place.line2 %>
+          <%= @place.line2 %></li>
+        <% end %>
+        <li>City: <%= @place.city %></li>  
+        <li>State: <%= @place.state %></li>
+        <li>Zip Code: <%= @place.zip %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <% if current_user.id == @place.owner_id %>
   <div class="owner_options">
     <%= link_to "View Rental Requests",  
@@ -11,13 +64,29 @@
         class: "btn btn-primary show_link_button" %>
         <br>
     <%= button_to "Delete Listing", 
-        place_url, method: :delete, 
+        place_url(@place), 
+        method: :delete, 
         class:  "btn btn-warning"%>
   </div>
 <% end %>
 
-<div class="form_on_page">
-  <form action="<%= place_place_rental_requests_url(@place) %>" method="post" >
+<div class="form_on_page" data-id="<%=@place.id %>">
+  <select id="payment_period"
+          name="place[payment_period]"
+          class="select select-block"
+          data-day="<%= @place.day_price %>"
+          data-week="<%= @place.week_price %>"
+          data-month="<%= @place.month_price %>">
+    <option value="day">Per Day</option>
+    <option value="week">Per Week</option>
+    <option value="month">Per Month</option>
+  </select>
+
+  <div id="price">
+    <h3>$<%= @place.day_price%></h3>
+  </div>
+
+  <form action="<%= place_place_rental_requests_url(@place) %>" method="post" id="request_form">
     <label for="request_begin">Begin Date</label>
     <br>
     <input type="date" name="request[begin_date]" id="request_begin">
@@ -36,31 +105,4 @@
   </form>
 </div>
 
-<div class="main_photo">
-  <%= filepicker_image_tag @place.filepicker_url, w:400 %>
-</div>
-
-<div id="description">
-  <p>Descripton: <br><%= @place.description %></p>
-</div>
-
-<div class="show_details show">
-  <ul id="show_details">
-    <li>Accommodates: <%= @place.max_occupancy %></li>
-    <li>Room Type: <%= @place.room_type %></li>
-    <li>Bedrooms: <%= @place.bedrooms %></li>
-  </ul>
-</div>
-
-<div class="show_address show">
-  <ul id="address">
-    <li>Address: <br><%= @place.address.line1 %><br>
-    <% if @place.address.line2 %>
-      <%= @place.address.line2 %></li>
-    <% end %>
-    <li>City: <%= @place.address.city %></li>  
-    <li>State: <%= @place.address.state %></li>
-    <li>Zip Code: <%= @place.address.zip %></li>
-  </ul>
-</div>
-
+<script type="text/javascript" src="/placeShow.js"></script>

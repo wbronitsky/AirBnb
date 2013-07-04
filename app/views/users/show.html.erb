@@ -1,0 +1,47 @@
+<script type="text/javascript" src="/userShow.js"></script>
+<div class="title">
+  <h1>Your Places:</h1>
+</div>
+<div class="container" 
+     data-height="<%= @places.count/4 + 1 %>">
+  <% @places.each do |place| %>
+
+    <div class="place_box inner" 
+         data-id="<%= place.id %>"
+         style="background-image: url('<%= place.filepicker_url %>/convert?format=jpg&quality=20')">
+      <h3 class="box_title"><%= place.title %></h3>
+      <ul id="address_details">
+        <li>Address: <br><%= place.line1 %><br>
+        <% if place.line2 %>
+          <%= place.line2 %></li>
+        <% end %>
+        <li>City: <%= place.city %></li>  
+      </ul>
+    </div>
+  <% end %>
+  <div class="create_new_place inner">
+    <div class="float_to_center">
+      List A New Place!
+    </div>
+  </div>
+</div>
+
+<div class="title">
+  <h1>Your Current Trips:</h1>
+</div>
+
+<div class="generic">
+  <% @trips.each do |trip| %>
+    <div class="trip_display">
+      <h4>Your Trip To <%= trip.place.title %>:</h4>
+      <ul>
+        <li>From: <%= trip.begin_date.strftime("%m/%d/%Y") %></li>
+        <li>To: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+      </ul>
+      <%= link_to "Property Details", place_url(trip.place), class: "btn" %>
+    </div>
+  <% end %>
+</div>
+
+
+
