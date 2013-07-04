@@ -19,12 +19,14 @@
       </ul>
     </div>
   <% end %>
-  <% if current_user.id == @places.first.owner_id %>
-    <div class="create_new_place inner">
-      <div class="float_to_center">
-        List A New Place!
+  <% unless @places.empty? %>
+    <% if current_user.id == @places.first.owner_id %>
+      <div class="create_new_place inner">
+        <div class="float_to_center">
+          List A New Place!
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 

@@ -1,0 +1,6 @@
+<% @thread.messages.sort_by! {|message| message.created_at} %>
+<h2><%= @thread.messages.first.title %></h2>
+
+<div class="all_messages">
+  <% @thread.messages.each do |message| %>
+    <div class="sinlge_message">

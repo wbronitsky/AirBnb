@@ -8,6 +8,9 @@ class MessageThreadsController < ApplicationController
   end
 
   def show
-    @thread = MessageThread.includes(:messages).find(params[:id])
+    @thread = MessageThread.find(params[:id])
+    @messages = Message.includes(:sender)
+                       .includes(:reciever)
+                       .where(message_thread_id: params[:id])
   end
 end
