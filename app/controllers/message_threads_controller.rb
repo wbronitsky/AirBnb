@@ -1,10 +1,11 @@
 class MessageThreadsController < ApplicationController
   def index
-    @threads = MessageThread.where(owner_id: current_user.id)
-    @threads += MessageThread.where(requester_id: current_user.id)
+    @threads = MessageThread.includes(:messages).where(owner_id: current_user.id)
+    @threads += MessageThread.includes(:messages).where(requester_id: current_user.id)
     @threads.sort_by! do |thread|
       thread.created_at
     end
+    @messages = @threads.map {|thread| thread.messages}
   end
 
   def show
@@ -18,5 +19,6 @@ class MessageThreadsController < ApplicationController
         message.save!
       end
     end
+    render json: [@thread, @messages]
   end
 end

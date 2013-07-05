@@ -1,0 +1,45 @@
+<div class="float_right" id="thread_show">
+  <% _(messages).sort_by(function(message){ %>
+    <% return message.created_at %>
+  <% }); %>
+  <h2>Thread: <%= messages[0].title %></h2>
+
+  <div class="all_messages">
+    <% _(messages).each(function(){ %>
+      <div class="single_message">
+        <h3>Sender: <%= message.sender.first_name %></h4>
+        <h4>Message: <%= message.title %></h3>
+        <p><%= message.message %></p>
+      </div>
+    <% }) %>
+  </div>
+
+  <a href="#new_message" role="button" class="btn" data-toggle="modal" id="message_button">Reply</a>
+</div>
+
+<div id="new_message" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Reply</h3>
+  </div>
+
+  <div class="modal-body">
+    <form class="message_send_forms">
+      <label for="title">Message Title:</label><br>
+      <input type="text" id="title" name="message[title]" class="modal-text"><br>
+
+      <label for="body">Message:</label><br>
+      <textarea id="body" name="message[message]" class="modal-text modal-textarea"></textarea><br>
+
+      <input type="hidden" name="message[reciever_id]" value="<%= current_user.id == @thread.owner_id ? @thread.requester_id : @thread.owner_id %>">
+
+      <input type="hidden" name="thread" value="<%= @thread.id %>">
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    </form>
+  </div>
+
+  <div class="modal_footer">
+    <button id="send" class="btn btn-primary buffer" data-dismiss="modal" aria-hidden="true">Send</button>
+  </div>
+</div>

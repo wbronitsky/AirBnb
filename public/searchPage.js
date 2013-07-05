@@ -4,6 +4,7 @@ $(function(){
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+    
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
     var allPlaces = $('div.all_places');
