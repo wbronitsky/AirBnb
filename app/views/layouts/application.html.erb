@@ -40,7 +40,14 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><a href="/users/<%= current_user.id %>">My Profile</a>
                 </li>
-                <li><a href="/message_threads">My Messages</a></li>
+                <li>
+                  <a href="/message_threads">
+                    My Messages 
+                    <span class="float_right">
+                      <%= unread_messages.count > 0 ? unread_messages.count : "" %>
+                    </span>
+                  </a>
+                </li>
                 <li><a href="/places/new">Create New Listing</a></li>
               </ul>
             </li>

@@ -13,8 +13,10 @@ class MessageThreadsController < ApplicationController
                        .includes(:reciever)
                        .where(message_thread_id: params[:id])
     @messages.each do |message|
-      message.read = true
-      message.save!
+      if current_user.id == message.reciever_id
+        message.read = true
+        message.save!
+      end
     end
   end
 end

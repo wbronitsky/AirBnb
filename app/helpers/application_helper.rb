@@ -18,4 +18,8 @@ module ApplicationHelper
 
     User.find_by_session_token(session[:session_token])
   end
+
+  def unread_messages
+    current_user.recieved_messages.where(read: nil)
+  end
 end

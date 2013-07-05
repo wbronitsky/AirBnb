@@ -27,10 +27,8 @@ $(function(){
 
        google.maps.event.addListener(marker, 'mouseover', function(event){
           console.log(event);
-
         })
       })
-
     })
 
     

@@ -11,7 +11,7 @@ $(function(){
         var renderedContent = fcn({
           message: data
         });
-        $('.all_messages').append(renderedContentr);
+        $('.all_messages').append(renderedContent);
       },
       error: function(){
         console.log('nope');
