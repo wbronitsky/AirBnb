@@ -6,12 +6,14 @@
 <div class="all_messages">
   <% @thread.messages.each do |message| %>
     <div class="single_message">
-      <h3>Message: <%= message.title %></h3>
-      <h4>Sender: <%= message.sender.id == current_user.id ? "You" : message.sender.user_name %></h4>
+      <h3>Sender: <%= message.sender.id == current_user.id ? "You" : message.sender.user_name %></h4>
+      <h4>Message: <%= message.title %></h3>
       <p><%= message.message %></p>
     </div>
   <% end %>
 </div>
+
+<%= link_to "All Threads", message_threads_url, class: "btn btn-primary" %>
 
 <a href="#new_message" role="button" class="btn" data-toggle="modal" id="message_button">Reply</a>
 

@@ -69,6 +69,11 @@
         class:  "btn btn-warning",
         style: "width: 190px; margin: 2px;"%>
   </div>
+<% else %>
+  <div class="owner_details">
+    <h3><%= @place.owner.user_name %>'s Property</h3>
+    <%= link_to "Profile", user_url(@place.owner_id), class: "btn btn-primary show_link_button" %>
+  </div>
 <% end %>
 
 <div class="form_on_page" data-id="<%=@place.id %>">

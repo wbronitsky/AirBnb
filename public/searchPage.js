@@ -31,10 +31,6 @@ $(function(){
       })
     })
 
-    
-
-    
-
     $('.place_search_box').on('click', function(event){
         window.location.replace("http://localhost:3000/places/" + $(event.currentTarget).data('id'))
     })

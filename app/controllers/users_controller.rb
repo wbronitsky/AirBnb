@@ -18,11 +18,18 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
     @places = current_user.places
-    @trips = PlaceRentalRequest.includes(:place)
-                                .where(user_id: current_user.id, 
-                                       status: "approved")
-                                .order("begin_date")
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+
+    redirect_to dashboard_url
+  end
 end

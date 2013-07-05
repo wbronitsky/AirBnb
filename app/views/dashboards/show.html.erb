@@ -1,0 +1,120 @@
+<script type="text/javascript" src="/dashboard.js"></script>
+
+<div class="dashboard">
+  <ul class="nav nav-pills">
+    <li class="active"><a class="dash" href="/dashboard">Dashboard</a></li>
+    <li><a class="dash" href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
+    <li><a class="dash" href="/users/<%= current_user.id %>">My Profile</a></li>
+    <li>
+      <a class="dash" href="/message_threads">
+        Messages: 
+        <%= unread_messages.count > 0 ? unread_messages.count : "" %>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div id="tabs" class="user_tabs_box">
+  <ul>
+    <li><a href="#tabs-1">Your Properties</a></li>
+    <li><a href="#tabs-2">Current Trips</a></li>
+    <li><a href="#tabs-3">Pending Trips</a></li>
+  </ul>
+
+  <div id="tabs-1">
+    <div class="title">
+      <h1>Your Properties:</h1>
+    </div>
+    <div class="container" 
+         data-height="<%= @places.count/4 + 1 %>">
+      <% @places.each do |place| %>
+
+        <div class="place_box inner" 
+             data-id="<%= place.id %>"
+             style="background-image: url('<%= place.filepicker_url %>/convert?format=jpg&quality=20')">
+          <h3 class="box_title"><%= place.title %></h3>
+          <ul id="address_details">
+            <li>Address: <br><%= place.line1 %><br>
+            <% if place.line2 %>
+              <%= place.line2 %></li>
+            <% end %>
+            <li>City: <%= place.city %></li>  
+          </ul>
+        </div>
+      <% end %>
+      <% unless @places.empty? %>
+        <% if current_user.id == @places.first.owner_id %>
+          <div class="create_new_place inner">
+            <div class="float_to_center">
+              List A New Place!
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="tabs-2">
+    <% unless @current_trips.empty? %>
+      <div class="title">
+        <h1>Your Current Trips:</h1>
+      </div>
+
+      <div class="generic">
+        <% @current_trips.each do |trip| %>
+          <div class="trip_display">
+            <h4>Your Trip To <%= trip.place.title %>:</h4>
+            <ul>
+              <li>From: <%= trip.begin_date.strftime("%m/%d/%Y") %></li>
+              <li>To: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+            </ul>
+            <%= link_to "Property Details", place_url(trip.place), class: "btn" %>
+            <button class="cancel_trip btn btn-danger" 
+                    data-id="<%= trip.id %>"
+                    data-place="<%= trip.place_id %>">
+                    Cancel Trip
+            </button>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="title">
+        <h1>No Current Trips Planned</h1>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="tabs-3">
+    <% unless @pending_trips.empty? %>
+      <div class="title">
+        <h1>Pending Requests:</h1>
+      </div>
+
+      <div class="generic">
+        <% @pending_trips.each do |trip| %>
+          <div class="trip_display">
+            <h4>Your Trip To <%= trip.place.title %>:</h4>
+            <ul>
+              <li>From: <%= trip.begin_date.strftime("%m/%d/%Y") %></li>
+              <li>To: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+            </ul>
+            <%= link_to "Property Details", place_url(trip.place), class: "btn" %>
+            <button class="cancel_trip btn btn-danger" 
+                    data-id="<%= trip.id %>"
+                    data-place="<%= trip.place_id %>">
+                    Cancel Request
+            </button>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="title">
+        <h1>No Pending Requests</h1>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+

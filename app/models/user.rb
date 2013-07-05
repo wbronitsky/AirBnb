@@ -1,7 +1,9 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :user_name
+  attr_accessible :email, :password, :user_name, 
+                  :city, :state, :first_name, :last_name,
+                  :filepicker_url, :description
 
   has_many :places, foreign_key: :owner_id
   has_many :requests, class_name: "PlaceRentalRequest"

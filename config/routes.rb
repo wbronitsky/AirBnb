@@ -1,4 +1,5 @@
 Air::Application.routes.draw do
+  resource :dashboard
   resources :users 
   resources :message_threads, only: [:index, :show]
   resources :messages

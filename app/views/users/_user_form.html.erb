@@ -2,13 +2,33 @@
 <%= form_for(user) do |f| %>
 
   <label for="user_name">User Name</label>
-  <input type="text" name="user[user_name]" id="user_name">
+  <input type="text" name="user[user_name]" id="user_name" value="<%= user.user_name %>">
 
   <label for="email">Email</label>
-  <input type="text" name="user[email]" id="email">
+  <input type="text" name="user[email]" id="email" value="<%= user.email %>">
 
   <label for="password">Password</label>
   <input type="password" name="user[password]" id="password">
+
+  <label for="first_name">First Name</label>
+  <input type="text" name="user[first_name]" id="first_name" value="<%= user.first_name %>">
+
+  <label for="last_name">Last Name</label>
+  <input type="text" name="user[last_name]" id="last_name" value="<%= user.last_name %>">
+
+  <label for="city">Current City</label>
+  <input type="text" name="user[city]" id="city" value="<%= user.city %>">
+
+  <label for="state">State</label>
+  <input type="text" name="user[state]" id="state" value="<%= user.state %>">
+
+  <label for="description">Introduce Yourself:</label><br>
+  <textarea id="description" name="user[description]">
+    <%= user.description %>
+  </textarea>
+
+  <%= f.label :filepicker_url, "Upload a Picture of Yourself" %>
+  <%= f.filepicker_field :filepicker_url %>
 
   <input type="submit" value="Sign Up!" class="btn btn-primary">
 <% end %>

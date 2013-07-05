@@ -19,8 +19,7 @@ $(function(){
         },
         
         error: function(){
-          $('.form_on_page').empty();
-          $('.form_on_page').append(formHTML).append('<h3>Dates Already Taken</h3>');
+          $('.form_on_page').append('<h3>Dates Already Taken</h3>');
         }
       })
     })

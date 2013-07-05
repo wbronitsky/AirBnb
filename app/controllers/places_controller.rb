@@ -39,7 +39,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
+    @place = Place.includes(:owner).find(params[:id])
   end
 
   def destroy

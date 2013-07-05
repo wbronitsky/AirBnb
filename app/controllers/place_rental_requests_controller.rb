@@ -16,14 +16,14 @@ class PlaceRentalRequestsController < ApplicationController
     request = PlaceRentalRequest.find(params[:id])
     request.approve
 
-    redirect_to place_url(params[:place_id])
+    redirect_to place_place_rental_requests_url
   end
 
   def deny
     request = PlaceRentalRequest.find(params[:id])
     request.deny
 
-    redirect_to place_url(params[:place_id])
+    redirect_to place_place_rental_requests_url
   end
 
   def index
