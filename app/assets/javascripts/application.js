@@ -19,5 +19,7 @@
 
 
 $(function(){
-  $('.selectpicker').selectpicker()
+  $('.selectpicker').selectpicker();
+  $('.dropdown-toggle').dropdown();
 })
+  
