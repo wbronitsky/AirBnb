@@ -15,6 +15,7 @@
 //= require jquery.ui.all
 //= require underscore
 //= require bootstrap.min
+//= bootstrap-select.js
 //= require_tree .
 
 
