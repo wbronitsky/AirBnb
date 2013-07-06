@@ -21,6 +21,7 @@ class PlacesController < ApplicationController
         end
       end
     end
+    @search = Kaminari.paginate_array(@search).page(params[:page]).per(10)
   end
 
   def new

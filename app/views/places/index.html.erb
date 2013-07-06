@@ -25,7 +25,9 @@
       <div class="p_left"><h4>$<%= place.day_price %> per night</h4></div>
     </div>
   <% end %>
-
+  <div id="search_pagination">
+    <%= paginate @search %>
+  </div>
 <% end %>
 
 <script type="text/javascript" src="/searchPage.js"></script>

@@ -13,6 +13,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'ejs'
 gem 'underscore-rails'
+gem 'kaminari'
 
 group :development do 
   gem 'better_errors'

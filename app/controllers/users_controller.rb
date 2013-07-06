@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @reviews = []
     @places.each {|place| @reviews += place.reviews}
     @reviews.sort_by {|review| review.created_at}
-    @reviews = @reviews[0,14]
+    @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(10)
   end
 
   def edit

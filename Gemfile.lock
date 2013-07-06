@@ -62,6 +62,9 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.8.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -140,6 +143,7 @@ DEPENDENCIES
   filepicker-rails
   jquery-rails
   jquery-ui-rails
+  kaminari
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

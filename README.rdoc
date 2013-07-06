@@ -1,1 +1,18 @@
 AirBnb Final Project For App Academy
+
+Features:
+  Secure user login and password storage
+  Search, including search by open dates
+  Threaded messages, message notifications and two pained message center
+  Dashboard for users
+  Image Uploading
+  Clickable map markers for search results
+
+Outside Libraries and APIs
+  Google Maps V3.0 - maps, places, geolocation
+  Kaminari - pagination
+  Solr & Sunspot - search
+  Filepicker - image uploading
+  Jquery - AJAX and DOM manipulation
+  Jquery UI - dragging, dropping, sorting, dropdowns
+  Bootstrap and Flat UI - styling

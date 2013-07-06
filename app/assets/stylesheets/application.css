@@ -13,6 +13,14 @@
  *= require ./flat-ui.css
  *= require jquery.ui.all
  */
+ #paginate_user_reviews{
+  float: left;
+  clear: left;
+ }
+ #search_pagination{
+  float: right;
+  clear: right;
+ }
  .review_user_info{
   margin-top: 2px;
   float:left;
