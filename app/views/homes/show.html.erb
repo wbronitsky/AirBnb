@@ -1,13 +1,15 @@
 <div id="home_page">
-<h1>Welcome Home!</h1>
-
+  <div>
+    <br>
+    <h1 id="front_page_header">Find A Place To Stay:</h1>
+  </div>
   <div class="search_bar">
     <form action="<%= places_url %>" method="get">
       <div class="float_left">
         <input type="text" 
                name="search[text]" 
                id="text" 
-               placeholder="Search"
+               placeholder="Where do you want to go?"
                class="search_field">
       </div>
       <div class="search_date_begin float_left" 
