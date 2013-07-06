@@ -1,4 +1,5 @@
 <script type="text/javascript" src="/dashboard.js"></script>
+<script type="text/javascript" src="/reviewModalSend.js"></script>
 
 <div class="dashboard">
   <ul class="nav nav-pills" id="dashboard_nav">
@@ -19,6 +20,7 @@
     <li><a href="#tabs-1">Your Properties</a></li>
     <li><a href="#tabs-2">Current Trips</a></li>
     <li><a href="#tabs-3">Pending Trips</a></li>
+    <li><a href="#tabs-4">Past Trips</a></li>
   </ul>
 
   <div id="tabs-1">
@@ -113,7 +115,53 @@
       </div>
     <% end %>
   </div>
+
+  <div id="tabs-4">
+    <div class="generic">
+      <% @past_trips.each do |trip| %>
+        <div class="trip_display">
+          <h4>Your Past Trip To <%= trip.place.title %>:</h4>
+          <ul>
+            <li>From: <%= trip.begin_date.strftime("%m/%d/%Y") %></li>
+            <li>To: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+          </ul>
+          <%= link_to "Property Details", place_url(trip.place), class: "btn" %>
+          <% if trip.review %>
+            <h5>Review Submitted</h5>
+          <% else %>
+            <a href="#new_review" role="button" class="btn" data-toggle="modal" id="message_button_<%=trip.id %>">Review Trip</a>
+          <% end %>
+
+          <div id="new_review" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+              <h3 id="myModalLabel">Trip Review</h3>
+            </div>
+
+            <div class="modal-body">
+              <form class="review_forms">
+               
+                <label for="body">Review:</label><br>
+                <textarea id="body" name="review[body]" class="modal-text modal-textarea"></textarea><br>
+
+                <input type="hidden" name="review[trip_id]" value="<%= trip.id %>">
+
+                <input type="hidden" name="review[place_id]" value="<%= trip.place.id %>">
+
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              </form>
+            </div>
+
+            <div class="modal_footer">
+              <button id="send" class="btn btn-primary buffer" data-dismiss="modal" data-id="<%= trip.id %>" aria-hidden="true">Send</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
 
 
 

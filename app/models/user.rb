@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
                   :filepicker_url, :description
 
   has_many :places, foreign_key: :owner_id
+  has_many :place_reviews, through: :places, source: :reviews
+  has_many :reviews
   has_many :requests, class_name: "PlaceRentalRequest"
   has_many :recieved_messages, class_name: "Message", foreign_key: :reciever_id
   has_many :sent_messages, class_name: "Message", foreign_key: :sender_id

@@ -15,7 +15,7 @@
               style="background-color:#ECF0F1;"
             <% end %>>
         <h5>With: <%= thread.owner_id == current_user.id ? thread.user2.user_name : thread.user1.user_name %></h5>
-        <h5>Title: <%= thread.messages.first.title %></h5>   
+        <h5>Title: <%= thread.messages.last.message[0,20] %>...</h5>   
       </div>
     <% end %> 
   </div>

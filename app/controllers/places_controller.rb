@@ -40,6 +40,10 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.includes(:owner).find(params[:id])
+    @reviews = Review.includes(:user)
+                     .includes(:place_rented)
+                     .where(place_id: params[:id])
+                     .limit(15)
   end
 
   def destroy

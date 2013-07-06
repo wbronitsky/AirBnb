@@ -6,6 +6,10 @@ class PlaceRentalRequestsController < ApplicationController
   def create
     place_rental_request = current_user.requests.build(params[:request])
     if place_rental_request.save
+      Message.create!(sender_id: current_user.id, 
+                     reciever_id: place_rental_request.place.owner_id,
+                     message: current_user.first_name + "has requested to rent " + place_rental_request.place.title,
+                     title: "Rental request for " + place_rental_request.place.title)
       render json: place_rental_request
     else
       render json: place_rental_request, status: 422

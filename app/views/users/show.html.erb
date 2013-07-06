@@ -6,16 +6,16 @@
 </div>
 
 <div class="float_left" id="user_description">
-  <h3>A Little About Me:</h3><br>
+  <h3 id="intro_heading">Hey, I'm <%= @user.first_name%>!</h3><br>
   <p><%= @user.description %></p>
 </div>
 
 <div id="user_show_properties">
-  <div class="title" style="border-top:none;">
+  <div class="review_title">
     <h1>Properties:</h1>
   </div>
 
-  <div class="container" 
+  <div class="container" id="user_show_container" 
        data-height="<%= @places.count/4 + 1 %>">
     <% @places.each do |place| %>
 
@@ -33,4 +33,25 @@
       </div>
     <% end %>
   </div>
+</div>
+
+<div class="review_title">
+  <h3>Reviews: <span class="faded_out"><%= @reviews.count %></span></h3>
+</div>
+
+<div id="user_reviews">
+  <h3>User Reviews:</h3>
+  <% @reviews.each do |review| %>
+    <div class="single_review">
+      <div class="review_user_info">
+        <img class="crop_image" style="display:inline;" src="<%= review.user.filepicker_url %>"><p><%= review.user.first_name %> from <%= review.user.city %></p>
+      </div>
+      <div class="review_user_page_body">
+        <span class="tooltip-arrow"></span>
+        <p><%= review.body %></p>
+        <br>
+        <p>Stayed at: <%= link_to review.place_rented.title, place_url(review.place_rented) %>, <%= review.trip.begin_date.strftime("%B %Y") %></p>
+      </div>
+    </div>
+  <% end %>
 </div>

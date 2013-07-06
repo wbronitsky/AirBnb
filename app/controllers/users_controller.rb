@@ -19,7 +19,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @places = current_user.places
+    @places = Place.includes(:reviews).where(owner_id: current_user.id)
+    @reviews = []
+    @places.each {|place| @reviews += place.reviews}
+    @reviews.sort_by {|review| review.created_at}
+    @reviews = @reviews[0,14]
   end
 
   def edit

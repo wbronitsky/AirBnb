@@ -3,6 +3,8 @@ class PlaceRentalRequest < ActiveRecord::Base
 
   belongs_to :place
   belongs_to :user
+  has_one :place_owner, through: :place, source: :owner
+  has_one :review, foreign_key: :trip_id
 
   validate :not_already_rented, :begin_date_not_in_past, :end_date_after_begin_date
 

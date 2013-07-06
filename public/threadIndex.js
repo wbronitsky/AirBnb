@@ -16,6 +16,7 @@ $(function(){
           messages: data[1],
           currentUserId: currentUserId
         });
+        $('div#thread_show').empty();
         $('h2').prepend(renderedContent);
       }
     })

@@ -5,7 +5,7 @@
     <% return message.created_at %>
   <% }); %>
   <% messages = messages.reverse() %>
-  <h2>Thread: <%= messages[0].title %></h2>
+  <h2 id="thread_title">Thread: <%= messages[0].message.split(20) %>...</h2>
 
   <div class="all_messages">
     <% _(messages).each(function(message){ %>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="modal-body">
-    <form class="message_send_forms">
+    <form class="message_send_forms" id="reply_form_<%= thread.id %>">
       <label for="title">Message Title:</label><br>
       <input type="text" id="title" name="message[title]" class="modal-text"><br>
 
@@ -42,6 +42,6 @@
   </div>
 
   <div class="modal_footer">
-    <button id="send" class="btn btn-primary buffer" data-dismiss="modal" aria-hidden="true">Send</button>
+    <button id="send" data-id="<%= thread.id %>" class="btn btn-primary buffer" data-dismiss="modal" aria-hidden="true">Send</button>
   </div>
 </div>

@@ -15,14 +15,14 @@
   </div>
   <div id="tabs-2">
     <div id="description">
-      <p>Descripton: <br><%= @place.description %></p>
+      <p><b>Descripton:</b> <br><%= @place.description %></p>
     </div>
 
     <div class="show_details show">
       <ul id="show_details">
-        <li>Accommodates: <%= @place.max_occupancy %></li>
-        <li>Room Type: <%= @place.room_type.capitalize %></li>
-        <li>Bedrooms: <%= @place.bedrooms %></li>
+        <li><b>Accommodates:</b> <%= @place.max_occupancy %></li>
+        <li><b>Room Type:</b> <%= @place.room_type.capitalize %></li>
+        <li><b>Bedrooms:</b> <%= @place.bedrooms %></li>
       </ul>
     </div>
   </div>
@@ -30,8 +30,8 @@
   <div id="tabs-3">
     <div class="show_rental_details show">
       <ul class="check_details">
-        <li>Check In Time: <%= @place.check_in %></li>
-        <li>Check Out Time: <%= @place.check_out %></li>
+        <li><b>Check In Time:</b> <%= @place.check_in %></li>
+        <li><b>Check Out Time:</b> <%= @place.check_out %></li>
       </ul>
       <h4>Special Instructions:</h4>
       <p class="center_me"><%= @place.special_info %></p>
@@ -41,13 +41,13 @@
   <div id="tabs-4">
     <div class="show_address show clear_me">
       <ul id="address">
-        <li>Address: <br><%= @place.line1 %><br>
+        <li><b>Address:</b> <br><%= @place.line1 %><br>
         <% if @place.line2 %>
           <%= @place.line2 %></li>
         <% end %>
-        <li>City: <%= @place.city %></li>  
-        <li>State: <%= @place.state %></li>
-        <li>Zip Code: <%= @place.zip %></li>
+        <li><b>City:</b> <%= @place.city %></li>  
+        <li><b>State:</b> <%= @place.state %></li>
+        <li><b>Zip Code:</b> <%= @place.zip %></li>
       </ul>
     </div>
   </div>
@@ -110,5 +110,23 @@
     <input type="submit" value="Submit Request!" class="btn submit_button">
   </form>
 </div>
+
+<div id="place_reviews">
+  <h3>User Reviews:</h3>
+  <% @reviews.each do |review| %>
+    <div class="single_review">
+      <div class="review_user_info">
+        <img class="crop_image" style="display:inline;" src="<%= review.user.filepicker_url %>"><p><%= review.user.first_name %> from <%= review.user.city %></p>
+      </div>
+      <div class="review_user_page_body">
+        <span class="tooltip-arrow"></span>
+        <p><%= review.body %></p>
+        <br>
+        <p><%= review.trip.begin_date.strftime("%B %Y") %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 
 <script type="text/javascript" src="/placeShow.js"></script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705165250) do
+ActiveRecord::Schema.define(:version => 20130706172438) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(:version => 20130705165250) do
     t.string   "check_out"
     t.text     "special_info"
     t.integer  "max_occupancy"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "trip_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "place_id"
   end
 
   create_table "users", :force => true do |t|

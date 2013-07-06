@@ -1,6 +1,7 @@
 Air::Application.routes.draw do
   resource :dashboard
   resources :users 
+  resources :reviews, only: :create
   resources :message_threads, only: [:index, :show]
   resources :messages
   resource :session, only: [:create, :destroy, :new]

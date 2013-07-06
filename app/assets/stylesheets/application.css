@@ -13,6 +13,53 @@
  *= require ./flat-ui.css
  *= require jquery.ui.all
  */
+ .review_user_info{
+  margin-top: 2px;
+  float:left;
+ }
+ .review_user_page_body{
+  float: left;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 5px;
+  background-color: #BDC3C7;
+  border-radius: 5px;
+  width: 70%;
+  padding: 5px;
+ }
+ #user_show_container{
+  margin: 2%;
+ }
+ .review_title{
+  border-bottom: solid gray 1px;
+  width: 90%;
+  margin: 5%;
+  margin-bottom: 0;
+ }
+ .faded_out{
+  color: #BDC3C7;
+ }
+ #intro_heading{
+  color: #ECF0F1;
+  background-color: #34495E;
+  margin-top: 0;
+ }
+ #user_reviews{
+  width: 90%;
+  margin: 5%;
+  float: left;
+  clear: left;
+ }
+ .single_review{
+  border-bottom: solid black 1px;
+  width: 100%;
+ }
+ #place_reviews{
+  width: 70%;
+  margin: 10px;
+  float: left;
+  clear: left;
+ }
  .tiny_image{
   width: 25px;
   height: 25px;
@@ -37,6 +84,7 @@
   border: solid black 1px;
   border-radius: 5px;
   margin: 10px;
+  width: 70%;
  }
  #user_show_properties{
   clear: left;
@@ -70,7 +118,8 @@
 #home_page{
   background: url(http://farm6.staticflickr.com/5310/5592929174_b3100b13af_z.jpg) no-repeat center center;
  background-size: cover;
- height: 500px;
+ margin-top: 0;
+ height: 450px;
  width: 100%;
  left: 0px;
  color: white;
@@ -127,6 +176,11 @@ ul#address_details{
   vertical-align: middle;
 }
 
+ul#address{
+  list-style: none;
+  width: 300%;
+}
+
 h3.box_title{
   padding: 20px;
 }
@@ -153,11 +207,12 @@ div.create_new_place{
   margin: 10px;
 }
 
+ul#show_details{
+  list-style: none;
+}
+
 .show{
-  border: solid 1px;
-  border-radius: 5px;
-  border-color: #2C3E50;
-  width: 200px;
+  width: 100%;
   margin: 5px;
 }
 
