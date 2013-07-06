@@ -26,13 +26,10 @@ $(function(){
 
        marker.setMap(map);
 
-       google.maps.event.addListener(marker, 'mouseover', function(event){
-          console.log(event);
+       var url = document.URL;
+       google.maps.event.addListener(marker, 'click', function(){
+          window.location.replace(url + "#" + title);
         })
       })
-    })
-
-    $('.place_search_box').on('click', function(event){
-        window.location.replace("http://localhost:3000/places/" + $(event.currentTarget).data('id'))
     })
   })

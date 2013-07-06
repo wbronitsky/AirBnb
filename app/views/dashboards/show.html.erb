@@ -1,16 +1,16 @@
 <script type="text/javascript" src="/dashboard.js"></script>
 
 <div class="dashboard">
-  <ul class="nav nav-pills">
+  <ul class="nav nav-pills" id="dashboard_nav">
     <li class="active"><a class="dash" href="/dashboard">Dashboard</a></li>
-    <li><a class="dash" href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
-    <li><a class="dash" href="/users/<%= current_user.id %>">My Profile</a></li>
     <li>
       <a class="dash" href="/message_threads">
-        Messages: 
-        <%= unread_messages.count > 0 ? unread_messages.count : "" %>
+        Inbox
+        <%= unread_messages.count > 0 ? ":  "+ unread_messages.count : "" %>
       </a>
     </li>
+    <li><a class="dash" href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
+    <li><a class="dash" href="/users/<%= current_user.id %>">My Profile</a></li>
   </ul>
 </div>
 

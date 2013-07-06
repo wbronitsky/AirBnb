@@ -12,6 +12,7 @@ Air::Application.routes.draw do
     end
   end
 
+  get '/logout', to: 'sessions#destroy'
   root to: "homes#show"
 
 end

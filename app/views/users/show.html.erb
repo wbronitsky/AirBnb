@@ -2,6 +2,7 @@
 <div class="user_info float_left">
   <%= filepicker_image_tag @user.filepicker_url, w:200 %>
   <h3><%= @user.first_name %></h3>
+  <p><%= @user.city %>, <%= @user.state %></p>
 </div>
 
 <div class="float_left" id="user_description">
@@ -10,7 +11,7 @@
 </div>
 
 <div id="user_show_properties">
-  <div class="title">
+  <div class="title" style="border-top:none;">
     <h1>Properties:</h1>
   </div>
 

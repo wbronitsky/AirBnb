@@ -11,7 +11,7 @@
   <div id="wrapper">
     <div class="navbar">
       <div class="navbar-inner">
-        <a class="brand" href="#">AirC'n'C</a>
+        <a class="brand" href="/" style="text-decoration:none;">AirC'n'C</a>
         <form action= "<%= places_url %>" 
               method="get" 
               class="navbar-search pull-left">
@@ -22,12 +22,12 @@
           <input type="hidden" 
                  name="authenticity_token"
                  value="<%= form_authenticity_token %>">
-          <input type="submit" value="Search" class="btn btn-primary">
+          <input type="submit" value="Search" class="btn btn-inverse">
         </form>
         <% if current_user %>
           <ul class="nav pull-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#" class="dropdown-toggle dash" data-toggle="dropdown">
                 <%= current_user.user_name %>
                 <b class="caret"></b>
               </a>
@@ -42,10 +42,10 @@
                     </span>
                   </a>
                 </li>
-                <li><a href="/places/new">Create New Listing</a></li>
+                <li><a href="/logout">Logout</a></li>
               </ul>
             </li>
-            <li><a href="/">Home</a></li>
+            <li><a href="/places/new">Create New Listing</a></li>
           </ul>
         <% else %>
           <ul class="nav pull-right">
@@ -63,13 +63,6 @@
     <div id="content">
       <%= yield %>
     </div>
-    <div class="clearfooter"></div>
-  </div>
-
-  <div class="footer">
-    <% if current_user %>
-      <%= button_to "Logout", session_url, method: :delete, class: "btn btn-info logout" %>
-    <% end %>
   </div>
 </body>
 </html>

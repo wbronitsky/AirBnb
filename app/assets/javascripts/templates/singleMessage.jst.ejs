@@ -1,5 +1,5 @@
 <div class="single_message">
-  <h3>Message: <%= message.title %></h3>
-  <h4>Sender: You</h4>
+  <img class="crop_image" src="<%= message.sender.filepicker_url %>"><h3 style="display:inline;">Sender: You</h3>
+  <h4>Message: <%= message.title %></h4>
   <p><%= message.message %></p>
 </div>
