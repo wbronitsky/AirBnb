@@ -4,12 +4,15 @@
 <h2>Thread: <%= @thread.messages.first.title %></h2>
 
 <div class="all_messages">
-  <% @thread.messages.each do |message| %>
-    <div class="single_message">
-      <h3>Sender: <%= message.sender.id == current_user.id ? "You" : message.sender.user_name %></h4>
-      <h4>Message: <%= message.title %></h3>
-      <p><%= message.message %></p>
-    </div>
+  <% if @thread.messages %>
+    <% @thread.messages.each do |message| %>
+      <div class="single_message">
+        <h3>Sender: <%= message.sender.id == current_user.id ? "You" : message.sender.user_name %></h4>
+        <h4>Message: <%= message.title %></h3>
+        <p><%= message.message %></p>
+      </div>
+  <% else %>
+    <h3> No Messages </h3>
   <% end %>
 </div>
 

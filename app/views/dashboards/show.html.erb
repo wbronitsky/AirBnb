@@ -117,10 +117,10 @@
   </div>
 
   <div id="tabs-4">
-    <div class="title">
-      <h1>Memories:</h1>
-    </div>
     <% unless @past_trips.empty? %>
+      <div class="title">
+        <h1>Memories:</h1>
+      </div>
       <div class="generic">
         <% @past_trips.each do |trip| %>
           <div class="trip_display">

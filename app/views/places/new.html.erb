@@ -1,3 +1,4 @@
+<script type="text/javascript"></script>
 <h1>List Your Spot!</h1>
 
 
@@ -157,10 +158,12 @@
     </textarea>
     <br>
   </div>
+  <br>
 
-  <div class="image_uploader float_left">
-    <%= f.label :filepicker_url, "Upload Your Main Photo:" %>
-    <%= f.filepicker_field :filepicker_url %>
+  <div class="image_uploader">
+    <%= f.label :filepicker_url, "Upload Your Main Photo:", id: "main_photo_label" %>
+    <%= f.filepicker_field :filepicker_url, class: "btn btn-info", onchange: "$('#main_photo_label').text('Photo Uploaded')" %>
   </div>
-  <input type="submit" value="Create Listing" class="btn btn-primary float_left">
+  <br>
+  <input id="submit_listing" type="submit" value="Create Listing" class="btn btn-primary float_left">
 <% end %>

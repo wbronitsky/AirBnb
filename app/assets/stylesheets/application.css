@@ -13,6 +13,14 @@
  *= require ./flat-ui.css
  *= require jquery.ui.all
  */
+ #submit_listing{
+  margin: 5px;
+  clear: left;
+ }
+ #add_new_picture{
+  margin: 5px;
+  clear: left;
+ }
  #front_page_header{
   margin-top: 10%;
   margin-left: 5px;
