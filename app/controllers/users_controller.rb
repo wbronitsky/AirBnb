@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @places = Place.includes(:reviews).where(owner_id: current_user.id)
     @reviews = []
     @places.each {|place| @reviews += place.reviews}
