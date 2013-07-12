@@ -20,7 +20,7 @@
          data-title="<%= place.title %>">
       <a name="<%= place.title %>" class="anchor" href="#<%= place.title %>"></a>
       <a href="/places/<%= place.id %>"><%= filepicker_image_tag place.filepicker_url, w:450 %></a>
-      <p><img class="crop_image" src="<%= place.owner.filepicker_url %>"><%= place.owner.user_name %>'s <%= place.room_type %></p>
+      <p><a href="users/<%= place.owner_id %>"><img class="crop_image" src="<%= place.owner.filepicker_url %>"></a><%= place.owner.user_name %>'s <%= place.room_type %></p>
       <p><%= place.city.capitalize %>, <%= place.state.capitalize %></p>
       <div class="p_left"><h4>$<%= place.day_price %> per night</h4></div>
     </div>
