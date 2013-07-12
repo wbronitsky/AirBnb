@@ -6,7 +6,7 @@ $(function(){
       event.preventDefault();
       var request = $('#request_form').serializeJSON();
       
-      $('.form_on_page').empty();
+     
       $('.form_on_page').append('<h2>Processing Request</h2>');
       
       $.ajax("http://localhost:3000/places/"+id+"/place_rental_requests",
