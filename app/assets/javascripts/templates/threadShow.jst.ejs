@@ -5,13 +5,13 @@
     <% return message.created_at %>
   <% }); %>
   <% messages = messages.reverse() %>
-  <h2 id="thread_title">Thread: <%= messages[0].message.split(20) %>...</h2>
+  <h2 id="thread_title">Thread: <%= messages[0].title.split(20) %>...</h2>
 
   <div class="all_messages">
     <% _(messages).each(function(message){ %>
       <div class="single_message">
         <img class="crop_image" src="<%= message.sender.filepicker_url %>"><h3 style="display:inline;">Sender: <%= message.sender_id === currentUserId ? "You" : message.sender.first_name %></h3>
-        <h4>Message: <%= message.title %></h3>
+        <h4>Title: <%= message.title %></h3>
         <p><%= message.message %></p>
       </div>
     <% }) %>
