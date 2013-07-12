@@ -7,7 +7,7 @@
     <li>
       <a class="dash" href="/message_threads">
         Inbox
-        <%= unread_messages.count > 0 ? ":  "+ unread_messages.count : "" %>
+        <%= unread_messages.length != 0 ? ":  "+ unread_messages.count.to_s : "" %>
       </a>
     </li>
     <li><a class="dash" href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
