@@ -51,7 +51,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     @place.destroy
 
-    redirect_to current_user
+    redirect_to dashboard_url
   end
 
   def edit
