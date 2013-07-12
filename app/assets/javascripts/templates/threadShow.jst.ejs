@@ -5,7 +5,7 @@
     <% return message.created_at %>
   <% }); %>
   <% messages = messages.reverse() %>
-  <h2 id="thread_title">Thread: <%= messages[0].title.split(20) %>...</h2>
+  <h2 id="thread_title">Thread: <%= messages[0].title.split(20) %></h2>
 
   <div class="all_messages">
     <% _(messages).each(function(message){ %>
