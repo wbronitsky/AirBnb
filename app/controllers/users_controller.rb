@@ -20,8 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @places = Place.includes(:reviews).where(owner_id: current_user.id)
-    @reviews = []
-    @places.each {|place| @reviews += place.reviews}
+    @reviews = @places.map {|place| place.reviews}
     @reviews.sort_by {|review| review.created_at}
     @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(10)
   end

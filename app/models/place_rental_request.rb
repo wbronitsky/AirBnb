@@ -8,6 +8,24 @@ class PlaceRentalRequest < ActiveRecord::Base
 
   validate :not_already_rented, :begin_date_not_in_past, :end_date_after_begin_date
 
+  def self.current_trips
+    self.select do |trip| 
+      trip.status == "approved" && trip.end_date > Date.today
+    end
+  end
+
+  def self.pending_trips
+    self.select do |trip|
+      trip.status == nil && trip.begin_date > Date.today
+    end
+  end
+
+  def self.past_trips
+    self.select do |trip|
+      trip.end_date < Date.today
+    end
+  end
+
   def approve
     unless already_rented?
       self.status = "approved"

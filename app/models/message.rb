@@ -8,8 +8,8 @@ class Message < ActiveRecord::Base
   validates :message, :title, presence: true
 
 
-  def as_json(options)
-    super(include: [:sender, :reciever])
+  def as_json(options={})
+    super(options.merge(include: [:sender, :reciever]))
   end
 
 end
