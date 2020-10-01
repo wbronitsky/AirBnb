@@ -1,7 +1,7 @@
 AirBnb Final Project For App Academy
 
 Features:
-  Secure user login and password storage
+  Secure and easy user login and password storage
   Search, including search by open dates
   Threaded messages, message notifications and two pained message center
   Dashboard for users
